@@ -1,7 +1,8 @@
-export const metadata = metadataForRoute("/caseStudy");
+import { projects } from "@/data/project";
 import { metadataForRoute } from "@/lib/metadata";
-import { projects } from "@/data/projects";
-import notFound from "next/navigation";
+import { notFound } from "next/navigation";
+
+export const metadata = metadataForRoute("/case-study");
 
 export default function CaseStudyPage({ params }) {
   const project = projects.find((item) => item.slug === params.slug);

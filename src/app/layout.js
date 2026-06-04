@@ -1,10 +1,17 @@
-import { Roboto } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+import Header from "../components/ui/Heading";
 import "./globals.css";
 
-const roboto = Roboto({
-  variable: "--font-roboto",
+const jakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: ["400", "500", "700"], // include the weights you need
+  weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -15,9 +22,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${roboto.variable} h-full antialiased`}>
-      <body className="flex min-h-screen max-w-full flex-col">
-        {/* <Header /> */}
+    <html
+      lang="en"
+      className={`${jakartaSans.variable} ${inter.variable} h-full antialiased`}
+    >
+      <body className="">
+        <Header />
         <main className="flex-1">{children}</main>
         {/* <Footer /> */}
       </body>
