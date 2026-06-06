@@ -1,0 +1,95 @@
+/* NAV */
+@utility header {
+  width: 100%;
+  max-width: 100%;
+  padding-inline: 80px;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@utility headerName {
+  font-family: var(--font-jakarta);
+  color: var(--heading);
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: -0.015em;
+}
+
+/* Desktop Section */
+@utility eyebrow {
+  font-family: var(--font-jakarta);
+  color: var(--subtext);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+@utility title {
+  font-family: var(--font-jakarta);
+  color: var(--heading);
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: -0.015em;
+}
+
+@utility subheading {
+  font-family: var(--font-inter);
+  color: var(--subtext);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Mobile Section */
+@utility mobileEyebrow {
+  font-family: var(--font-jakarta);
+  color: var(--subtext);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+@utility mobileTitle {
+  font-family: var(--font-jakarta);
+  color: var(--heading);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: -0.015em;
+}
+
+@utility mobileSubheading {
+  font-family: var(--font-inter);
+  color: var(--subtext);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Cards */
+@utility card-heading {
+  font-family: var(--font-inter);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+
+  border-radius: 4px;
+
+  color: var(--heading);
+}
+
+@utility card-description {
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+
+  border-radius: 4px;
+
+  color: var(--heading);
+}

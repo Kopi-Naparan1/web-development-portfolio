@@ -16,11 +16,16 @@ const navLinks = [
 export default function Heading() {
   const pathname = usePathname();
   return (
-    <div className="header  ">
+    <div className="md:header hidden">
       <div>
         <div className="flex flex-row gap-1  ">
           <div className="relative w-[58px] h-[58px] ">
-            <Image fill className="object-contain" src={logo} alt="Logo" />
+            <Image
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 58px"
+              src={logo}
+              alt="Logo"
+            />
           </div>
 
           <div className="flex flex-col">
