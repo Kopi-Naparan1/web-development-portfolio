@@ -14,7 +14,7 @@ export function PrimaryButton({ textSize = "16px", mt = "2", className = "" }) {
 
   return (
     <button
-      className={`bg-primary font-jakarta text-background font-semibold py-1 px-4 rounded-2xl hover:bg-secondary shadow-md hover:text-heading/50 transition-colors duration-150 cursor-pointer ${className}`}
+      className={`bg-primary font-jakarta text-background depth   font-semibold py-1 px-4 rounded-2xl hover:bg-secondary shadow-md hover:text-heading/80 border-2 border-transparent hover:border-primary transition-colors duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
       Lets Chat -&gt;
@@ -42,7 +42,7 @@ export function CardPrimaryButton({
 
   return (
     <button
-      className={`bg-primary font-jakarta text-background font-semibold py-1 px-4 rounded-2xl hover:bg-secondary shadow-md hover:text-heading/50 transition-colors duration-150 cursor-pointer ${className}`}
+      className={`bg-primary/50 border-2 border-transparent hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-2xl hover:bg-primary/70 shadow-md hover:text-background/80 transition-colors duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
       View Case Study -&gt;

@@ -37,7 +37,7 @@ export function HeroSection() {
             </div>
           </div>
           <div className="col-span-1 h-full w-full"></div>
-          <div className="col-span-4 h-full w-full ">
+          <div className="col-span-4 h-full w-full hidden">
             <Spline
               className="hidden md:block"
               scene={SPLINE_SCENE}
@@ -49,6 +49,7 @@ export function HeroSection() {
 
       {/*  MOBILE */}
       <section className="md:hidden mobileSectionLayout grid grid-rows-10 items-center justify-between ">
+        <div className="row-span-1 h-full w-full "></div>
         <div className="row-span-5 h-full w-full ">
           <Spline
             className="block h-full w-full hidden md:hidden"
@@ -73,7 +74,6 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-        <div className="row-span-1 h-full w-full "></div>
       </section>
     </>
   );

@@ -20,3 +20,19 @@
   flex-direction: column;
   overflow: hidden;
 }
+
+@utility flexibleSectionLayout {
+  width: 100%;
+  padding-inline: 80px;
+  padding-block: 4vh;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+@utility flexibleMobileSectionLayout {
+  width: 100%;
+  padding-inline: 14px;
+  padding-block: 8px;
+  max-width: 100vw;
+  max-height: 100vh;
+}

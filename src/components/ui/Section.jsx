@@ -20,9 +20,21 @@ export function SectionScreen({
           <p className="md:subheading mobileSubheading">{subheading}</p>
         )}
       </div>
-      <div className={`md:mt-[5vh] mt-[3vh] ${childrenClassName}`}>
+      <div
+        className={`md:mt-[5vh]  h-full w-full mt-[3vh] ${childrenClassName}`}
+      >
         {children}
       </div>
+    </section>
+  );
+}
+
+export function FlexibleSectionScreen({ className, children }) {
+  return (
+    <section
+      className={`flexibleMobileSectionLayout md:flexibleSectionLayout  ${className}`}
+    >
+      <>{children}</>
     </section>
   );
 }

@@ -82,7 +82,7 @@ function MobileProcessCard({ process, index, normalized }) {
           </div>
         </div>
         <motion.p
-          className="card-description mb-[2px]"
+          className="card-description mb-[2px] px-1"
           style={{
             opacity,
             y: textY,
@@ -190,11 +190,12 @@ export default function Process() {
     offset: ["start end", "end start"],
   });
 
-  const normalized = useTransform(scrollYProgress, [0, 0.75], [0, 1]);
+  const normalized = useTransform(scrollYProgress, [0, 0.55], [0, 1]);
 
   return (
     <SectionScreen
       ref={sectionRef}
+      eyebrow={"how i work"}
       heading={"Simple, clear, No Surpises"}
       subheading={
         "From first message to launch day, here's what working with me looks like"
@@ -224,3 +225,7 @@ export default function Process() {
     </SectionScreen>
   );
 }
+// NOTE: maybe when user clicked the icon, you make the bg something
+// like supports that. Make sure you use ai to make the color grading the same.
+// just get some photo on the internet
+// Show it when user hovered that card for like .5s or 1s, the make the cursor pointer

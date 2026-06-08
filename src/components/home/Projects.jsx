@@ -89,7 +89,7 @@ function MobileProjectCard({ project }) {
   const handleMouseEnter = () => {
     clearTimeout(timerRef.current);
     setIsHovered(true);
-    tooltipTimerRef.current = setTimeout(() => setShowTooltip(true), 500); // show after 600ms
+    tooltipTimerRef.current = setTimeout(() => setShowTooltip(true), 200); // show after 600ms
   };
 
   const handleMouseLeave = () => {
@@ -118,6 +118,8 @@ function MobileProjectCard({ project }) {
             src={project.vid}
           />
         </div>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-secondary/40 to-black/20" />
         <div className={`card-dim z-20 ${isHovered ? "card-dim-hover" : ""}`} />
         <div className={` z-20 ${isHovered ? "card-overlay" : ""}`} />
         <div
@@ -133,12 +135,12 @@ function MobileProjectCard({ project }) {
         </div>
 
         <div
-          className={`absolute inset-x-0 bottom-4 z-40 flex flex-col items-center px-4 gap-1 transition-opacity duration-300 ${showTooltip ? "opacity-100" : "opacity-0"}`}
+          className={`absolute inset-x-0 bottom-4 z-40 flex flex-col items-center px-4 gap-1 transition-opacity duration-200 ${showTooltip ? "opacity-100" : "opacity-0"}`}
         >
-          <h3 className="text-heading font-semibold  text-[12px] text-center px-2 bg-secondary py-0.5 rounded-[4px]">
+          <h3 className="text-background font-semibold  text-[12px] text-center px-2 py-0.5 rounded-[4px]">
             {project.title}
           </h3>
-          <p className="text-[10px] font-jakarta text-heading text-center px-2 bg-secondary/90 py-1 rounded-[4px]">
+          <p className="text-[10px] font-jakarta text-background/90 text-center px-[1%]  py-.5 rounded-[4px]">
             {project.result}
           </p>
         </div>
