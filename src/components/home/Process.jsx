@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useMemo } from "react";
 import { SectionScreen } from "../ui/Section";
+import { useState } from "react";
 import { Search, PenTool, Code, Rocket } from "lucide-react";
 import { motion, useScroll, useTransform, useMotionValue } from "framer-motion";
 
@@ -45,6 +46,7 @@ const processList = [
 ];
 
 function MobileProcessCard({ process, index, normalized }) {
+  const [isHovered, setIsHovered] = useState(false);
   const count = processList.length;
   const segment = 1 / count;
   const start = index * segment;
@@ -54,12 +56,17 @@ function MobileProcessCard({ process, index, normalized }) {
 
   const textY = useTransform(normalized, [start, end], [20, 0]);
 
-  const opacity = useTransform(normalized, [start, end], [0, 1]);
+  const opacity = useTransform(normalized, [start, end], [0, 0.3]);
+  const finalOpacity = useTransform(opacity, (value) =>
+    isHovered ? 0.8 : value,
+  );
 
   const pegY = useTransform(normalized, [start, end], [10, 0]);
   const Icon = process.icon;
   return (
     <motion.div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="flex flex-col h-[23vh] "
       style={{
         marginTop: index === 0 ? 0 : "-3vh",
@@ -74,7 +81,7 @@ function MobileProcessCard({ process, index, normalized }) {
         <div className="w-[15vw] bg-secondary border-t-2 border-x-2 h-[3vh] rounded-t-2xl"></div>
       </motion.div>
 
-      <div className="border-2 border-primary flex flex-col justify-evenly rounded-[8px] depth h-full bg-lighter  ">
+      <div className="group border-2 border-primary flex flex-col justify-evenly rounded-[8px] depth h-full bg-lighter  ">
         <h3 className="card-heading text-center">{process.title}</h3>
         <div className="flex justify-center my-2">
           <div className="p-[1.2vh] rounded-full bg-primary/10 border border-primary/20 depth hoverLift">
@@ -82,11 +89,17 @@ function MobileProcessCard({ process, index, normalized }) {
           </div>
         </div>
         <motion.p
-          className="card-description mb-[2px] px-1"
+          animate={{
+            opacity: isHovered ? 0.8 : opacity.get(0.2),
+          }}
+          transition={{
+            duration: 0.2,
+            ease: "easeOut",
+          }}
           style={{
-            opacity,
             y: textY,
           }}
+          className="card-description mb-[2px] p-1"
         >
           {process.description}
         </motion.p>

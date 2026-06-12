@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "./cards.css";
-@import "./layout-utilities.css";
-@import "./letters.css";
 
 * {
   box-sizing: border-box;
@@ -49,4 +46,239 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-jakarta-sans), sans-serif;
+}
+
+/* LETTERS */
+
+@utility header {
+  width: 100%;
+  max-width: 100%;
+  padding-inline: 80px;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@utility headerName {
+  font-family: var(--font-jakarta);
+  color: var(--heading);
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: capitalize;
+  letter-spacing: -0.015em;
+}
+
+/* Desktop Section */
+@utility eyebrow {
+  font-family: var(--font-jakarta);
+  color: var(--subtext);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+@utility title {
+  font-family: var(--font-jakarta);
+  color: var(--heading);
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: -0.015em;
+}
+
+@utility subheading {
+  font-family: var(--font-inter);
+  color: var(--subtext);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Mobile Section */
+@utility mobileEyebrow {
+  font-family: var(--font-jakarta);
+  color: var(--subtext);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+@utility mobileTitle {
+  font-family: var(--font-jakarta);
+  color: var(--heading);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: -0.015em;
+}
+
+@utility mobileSubheading {
+  font-family: var(--font-inter);
+  color: var(--subtext);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Cards */
+@utility card-heading {
+  font-family: var(--font-inter);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+
+  border-radius: 4px;
+
+  color: var(--heading);
+}
+
+@utility card-description {
+  font-family: var(--font-jakarta);
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+
+  border-radius: 4px;
+
+  color: var(--heading);
+}
+
+/* LAYOUT UTILITIES */
+@utility sectionLayout {
+  height: 100vh;
+  width: 100%;
+  padding-inline: 80px;
+  padding-block: 4vh;
+  display: flex;
+  max-width: 100vw;
+  max-height: 100vh;
+
+  overflow: hidden;
+}
+
+@utility mobileSectionLayout {
+  height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  padding-inline: 14px;
+  padding-block: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@utility flexibleSectionLayout {
+  width: 100%;
+  padding-inline: 80px;
+  padding-block: 4vh;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+@utility flexibleMobileSectionLayout {
+  width: 100%;
+  padding-inline: 14px;
+  padding-block: 8px;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+/* CARDS */
+@utility card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.2),
+    transparent
+  );
+}
+
+@utility card-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 45%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  opacity: 1;
+  transition: opacity 100ms ease;
+}
+
+@utility card-vignette-hover {
+  opacity: 0;
+}
+@utility card-image {
+  object-fit: cover;
+  transition: transform 100ms ease;
+}
+
+@utility card-dim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 100ms ease;
+}
+
+@utility card-dim-hover {
+  opacity: 0;
+}
+
+@utility card-image-hover {
+  transform: scale(1.05);
+}
+
+@utility depth {
+  border: 1px solid rgba(29, 78, 216, 0.3);
+  box-shadow: 0 4px 6px rgba(29, 78, 216, 0.1);
+  border-radius: 8px;
+}
+
+@utility hoverLift {
+  transition: all 300ms ease;
+}
+
+.hoverLift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px rgba(29, 78, 216, 0.15);
+}
+
+@utility lightWash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.1),
+    transparent,
+    rgba(59, 130, 246, 0.05)
+  );
+  pointer-events: none;
+}
+
+@keyframes driftImage {
+  0% {
+    transform: scale(1.15) translate(0px, 0px);
+  }
+
+  50% {
+    transform: scale(1.15) translate(-15px, -10px);
+  }
+
+  100% {
+    transform: scale(1.15) translate(0px, 0px);
+  }
+}
+
+@utility animate-drift-image {
+  animation: driftImage 15s ease-in-out infinite;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
