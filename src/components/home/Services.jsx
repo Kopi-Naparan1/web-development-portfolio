@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
 import { SectionScreen } from "../ui/Section";
 import { PrimaryButton } from "../ui/Buttons";
 
@@ -47,11 +46,11 @@ function ServiceCard({ service, mobile = false }) {
   return (
     <div
       className={`group relative overflow-hidden border-2 border-primary ${
-        mobile ? "flex-1 w-[75%]" : "h-[45vh] w-[32%]"
+        mobile ? "h-[25vh] w-[75%]" : "h-[45vh] w-[32%]"
       } ${borderRadius}`}
     >
       {/* Image */}
-      <div className="absolute inset-0 animate-drift-image">
+      <div className="absolute inset-0">
         <Image
           src={service.image}
           alt={service.title}
@@ -97,7 +96,7 @@ function ServiceCard({ service, mobile = false }) {
 export default function Services({ sectionID }) {
   return (
     <SectionScreen
-      minHeightClass="mih-h-[60vh]"
+      minHeightClass="min-h-[80vh] md:mih-h-[70vh]"
       id={sectionID}
       className={"bg-secondary/15"}
       eyebrow="What i offer"
@@ -115,7 +114,7 @@ export default function Services({ sectionID }) {
       </div>
 
       {/* Desktop */}
-      <div className="w-full flex-1 md:flex flex-col hidden justify-between items-center  ">
+      <div className="w-full flex-1 md:flex flex-col hidden justify-between items-center">
         <div className="w-full flex-1 flex flex-row justify-between items-center">
           {servicesList.map((service) => (
             <ServiceCard key={service.title} service={service} />

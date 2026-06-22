@@ -1,21 +1,8 @@
 "use client";
 
-import { useRef, useEffect, useMemo, useState } from "react";
+import { useState } from "react";
 import { SectionScreen } from "../ui/Section";
 import { Search, PenTool, Code, Rocket } from "lucide-react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValue,
-  useReducedMotion,
-  useInView,
-  animate,
-} from "framer-motion";
-
-// ============================================================
-// Content
-// ============================================================
 
 const processList = [
   {
@@ -56,25 +43,11 @@ const processList = [
   },
 ];
 
-// ============================================================
-// Layout constants
-// ============================================================
-
-const GAP_PER_STEP = 120;
-
-const MOBILE_BASE_WIDTH_VW = 68;
-const MOBILE_WIDTH_RANGE_VW = 6;
-
 const DESKTOP_CARD_HEIGHT = "min(clamp(36vh, 38vh, 40vh), 420px)";
 const DESKTOP_CARD_WIDTH = "min(20vw, 300px)";
 
-// How long the one-time reveal animation takes once triggered
-const REVEAL_DURATION = 0.6;
-const REVEAL_STAGGER = 0.12;
-
-// ============================================================
-// Shared style fragments
-// ============================================================
+const MOBILE_BASE_WIDTH_VW = 68;
+const MOBILE_WIDTH_RANGE_VW = 6;
 
 const leftDesignClass =
   "col-start-1 col-end-2 row-start-7 row-end-10 bg-secondary border-t-2 border-l-2 border-b-2 border-primary";
@@ -90,10 +63,6 @@ const CLAMP_4 =
   "[display:-webkit-box] [-webkit-line-clamp:4] [-webkit-box-orient:vertical] overflow-hidden";
 const CLAMP_5 =
   "[display:-webkit-box] [-webkit-line-clamp:5] [-webkit-box-orient:vertical] overflow-hidden";
-
-// ============================================================
-// Small presentational pieces
-// ============================================================
 
 function StepIcon({ Icon, size = "h-[4vh] w-[4vh]" }) {
   if (!Icon) return null;
@@ -119,17 +88,7 @@ function LegoPegs() {
   );
 }
 
-// ============================================================
-// Mobile card
-// ============================================================
-
-function MobileProcessCard({
-  process,
-  index,
-  count,
-  hasEntered,
-  reducedMotion,
-}) {
+function MobileProcessCard({ process, index, count }) {
   const [isActive, setIsActive] = useState(false);
   const Icon = process.icon;
 
@@ -137,16 +96,8 @@ function MobileProcessCard({
     MOBILE_BASE_WIDTH_VW -
     (count > 1 ? (index / (count - 1)) * MOBILE_WIDTH_RANGE_VW : 0);
 
-  // Same visual motion as before (slide up + fade in), but driven by a
-  // one-shot "hasEntered" flag instead of live scroll position — so once
-  // it plays, it stays in its resting state regardless of scroll direction.
-  const initial = reducedMotion
-    ? { y: 0, opacity: 0.95 }
-    : { y: 220, opacity: 0.55 };
-  const resting = { y: 0, opacity: 0.95 };
-
   return (
-    <motion.li
+    <li
       onMouseEnter={() => setIsActive(true)}
       onMouseLeave={() => setIsActive(false)}
       onFocus={() => setIsActive(true)}
@@ -158,26 +109,10 @@ function MobileProcessCard({
         zIndex: count - index + 6,
         width: `${widthVw}vw`,
       }}
-      initial={initial}
-      animate={hasEntered ? resting : initial}
-      transition={{
-        duration: REVEAL_DURATION,
-        delay: index * REVEAL_STAGGER,
-        ease: "easeOut",
-      }}
     >
-      <motion.div
-        className="flex justify-evenly"
-        initial={reducedMotion ? { y: 0 } : { y: 10 }}
-        animate={hasEntered ? { y: 0 } : reducedMotion ? { y: 0 } : { y: 10 }}
-        transition={{
-          duration: REVEAL_DURATION,
-          delay: index * REVEAL_STAGGER,
-          ease: "easeOut",
-        }}
-      >
+      <div className="flex justify-evenly">
         <LegoPegs />
-      </motion.div>
+      </div>
 
       <div
         className={`border-2 border-primary flex flex-col justify-evenly rounded-[8px] depth h-full bg-lighter transition-shadow duration-300 ${
@@ -195,69 +130,24 @@ function MobileProcessCard({
           <StepIcon Icon={Icon} />
         </div>
 
-        <motion.p
-          initial={reducedMotion ? { y: 0 } : { y: 20 }}
-          animate={hasEntered ? { y: 0 } : reducedMotion ? { y: 0 } : { y: 20 }}
-          transition={{
-            duration: REVEAL_DURATION,
-            delay: index * REVEAL_STAGGER,
-            ease: "easeOut",
-          }}
+        <p
           style={{ opacity: isActive ? 0.95 : undefined }}
           className={`card-description mb-[2px] p-1 ${CLAMP_4}`}
         >
           {process.description}
-        </motion.p>
+        </p>
       </div>
-    </motion.li>
+    </li>
   );
 }
 
-// ============================================================
-// Desktop card
-// ============================================================
-
-function getStartX(index, total) {
-  const mid = (total - 1) / 2;
-  const offsetSteps = index - mid;
-  return offsetSteps * GAP_PER_STEP * 2;
-}
-
-function DesktopProcessCard({
-  process,
-  index,
-  total,
-  hasEntered,
-  reducedMotion,
-}) {
+function DesktopProcessCard({ process, index, total }) {
   const Icon = process.icon;
   const isLast = index === total - 1;
 
-  const startX = useMemo(() => getStartX(index, total), [index, total]);
-
-  const x = useMotionValue(reducedMotion ? 0 : startX);
-  const y = useMotionValue(0);
-
-  useEffect(() => {
-    if (reducedMotion) {
-      x.set(0);
-      return;
-    }
-
-    // Animate from the spread-out start position to 0 (resting/overlapped)
-    // once, when hasEntered flips true. No live scroll binding, no reverse.
-    const controls = animate(x, hasEntered ? 0 : startX, {
-      duration: REVEAL_DURATION + 0.2,
-      delay: hasEntered ? index * REVEAL_STAGGER : 0,
-      ease: [0.16, 1, 0.3, 1], // smooth deceleration, keeps the "settle into place" feel
-    });
-
-    return () => controls.stop();
-  }, [hasEntered, startX, x, reducedMotion, index]);
-
   return (
-    <motion.li
-      style={{ x, y, height: DESKTOP_CARD_HEIGHT, width: DESKTOP_CARD_WIDTH }}
+    <li
+      style={{ height: DESKTOP_CARD_HEIGHT, width: DESKTOP_CARD_WIDTH }}
       tabIndex={0}
       className={`
         group list-none grid grid-cols-10 grid-rows-11 grid-flow-row flex-shrink-0
@@ -306,31 +196,16 @@ function DesktopProcessCard({
           <div className={rightBottomClass} />
         </div>
       )}
-    </motion.li>
+    </li>
   );
 }
 
-// ============================================================
-// Main export
-// ============================================================
-
 export default function Process({ sectionID }) {
-  const sectionRef = useRef(null);
-  const reducedMotion = useReducedMotion();
   const count = processList.length;
-
-  // Fires true once the section is sufficiently in view, and stays true
-  // forever after (default useInView behavior — once: false here, but we
-  // never let hasEntered go back to false below).
-  const isInView = useInView(sectionRef, {
-    amount: 0.35,
-    once: true,
-  });
 
   return (
     <SectionScreen
       id={sectionID}
-      ref={sectionRef}
       eyebrow={"how i work"}
       heading={"Simple, clear, No Surpises"}
       subheading={
@@ -349,8 +224,6 @@ export default function Process({ sectionID }) {
             process={process}
             index={index}
             count={count}
-            hasEntered={isInView}
-            reducedMotion={reducedMotion}
           />
         ))}
       </ol>
@@ -364,8 +237,6 @@ export default function Process({ sectionID }) {
             process={process}
             index={index}
             total={count}
-            hasEntered={isInView}
-            reducedMotion={reducedMotion}
           />
         ))}
       </ol>

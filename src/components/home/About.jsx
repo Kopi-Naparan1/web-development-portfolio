@@ -4,8 +4,6 @@ import { SectionScreen } from "../ui/Section";
 import { PrimaryButton } from "../ui/Buttons";
 import AboutImage from "../../../public/important-assets/homepage/about/about.webp";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 
 const paragraphList = [
   {
@@ -22,28 +20,14 @@ const paragraphList = [
   },
 ];
 
-function AnimatedItem({ children, index }) {
-  const ref = useRef(null);
-  // once: true — plays the slide/shrink reveal a single time, then holds
-  // its final position regardless of further scrolling
-  const isInView = useInView(ref, { margin: "-80px", once: true });
-
+function StaticItem({ children, index }) {
   const shift = index * 4;
   const shrink = index * 10;
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ x: 0, opacity: 0.4, width: "100%" }}
-      animate={
-        isInView
-          ? { x: `${shift}rem`, opacity: 1, width: `${100 - shrink}%` }
-          : { x: 0, opacity: 0.4, width: "100%" }
-      }
-      transition={{ duration: 0.5, delay: index * 0.15, ease: "easeOut" }}
-    >
+    <div style={{ marginLeft: `${shift}rem`, width: `${100 - shrink}%` }}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -76,24 +60,24 @@ export default function About({ sectionID }) {
           )}
         </div>
 
-        {/* Desktop paragraphs with animation */}
+        {/* Desktop paragraphs */}
         <div className="hidden md:flex flex-col text-[20px] text-left w-full mt-[2%]">
           <div className="flex flex-col gap-[3vh]">
             {paragraphList.map((paragraph, index) => (
-              <AnimatedItem key={paragraph.order} index={index}>
+              <StaticItem key={paragraph.order} index={index}>
                 <p>{paragraph.p}</p>
-              </AnimatedItem>
+              </StaticItem>
             ))}
           </div>
 
-          <AnimatedItem index={paragraphList.length}>
+          <StaticItem index={paragraphList.length}>
             <div className="flex mt-[3vh]">
               <div className="flex flex-col">
                 <p className="text-[12px] opacity-60">Want a website?</p>
                 <PrimaryButton />
               </div>
             </div>
-          </AnimatedItem>
+          </StaticItem>
         </div>
 
         {/* Mobile CTA */}
