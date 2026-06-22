@@ -1,4 +1,7 @@
-import dynamic from "next/dynamic";
+import nextDynamic from "next/dynamic";
+
+export const dynamic = "force-static";
+
 import { HeroSection } from "@/components/home/Hero";
 import Projects from "@/components/home/Projects";
 import SocialProof from "@/components/home/SocialProof";
@@ -9,13 +12,14 @@ import SocialProof from "@/components/home/SocialProof";
 // import Skills from "@/components/home/Skills";
 // import About from "@/components/home/About";
 // import Contact from "@/components/home/Contact";
-
-const Process = dynamic(() => import("@/components/home/Process"));
-const Services = dynamic(() => import("@/components/home/Services"));
-const Testimonials = dynamic(() => import("@/components/home/Testimonials"));
-const Skills = dynamic(() => import("@/components/home/Skills"));
-const About = dynamic(() => import("@/components/home/About"));
-const Contact = dynamic(() => import("@/components/home/Contact"));
+const Process = nextDynamic(() => import("@/components/home/Process"));
+const Services = nextDynamic(() => import("@/components/home/Services"));
+const Testimonials = nextDynamic(
+  () => import("@/components/home/Testimonials"),
+);
+const Skills = nextDynamic(() => import("@/components/home/Skills"));
+const About = nextDynamic(() => import("@/components/home/About"));
+const Contact = nextDynamic(() => import("@/components/home/Contact"));
 
 import { metadataForRoute } from "@/lib/metadata";
 

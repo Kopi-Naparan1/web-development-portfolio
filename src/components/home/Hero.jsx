@@ -105,7 +105,7 @@ export function HeroSection({ sectionID }) {
         className="md:sectionLayout md:h-[95vh]  hidden md:block"
         id={sectionID}
       >
-        <div className="grid grid-cols-10  flex-1 w-full items-center">
+        <div className="grid grid-cols-10  h-full w-full items-center ">
           <div className="col-span-5 text-left flex flex-col gap-5">
             <HeadingText className="text-[60px]" />
             <SubText className="text-[18px]" />
