@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { PrimaryButton } from "../ui/Buttons";
@@ -101,7 +101,10 @@ export function HeroSection({ sectionID }) {
   return (
     <>
       {/* DESKTOP */}
-      <section className="md:sectionLayout md:h-[95vh]  hidden " id={sectionID}>
+      <section
+        className="md:sectionLayout md:h-[95vh]  hidden md:block"
+        id={sectionID}
+      >
         <div className="grid grid-cols-10  flex-1 w-full items-center">
           <div className="col-span-5 text-left flex flex-col gap-5">
             <HeadingText className="text-[60px]" />
@@ -129,6 +132,7 @@ export function HeroSection({ sectionID }) {
         <div className="flex-[1]" /> {/* spacer */}
         <div className="flex-[5] w-full min-h-0">
           <SplineOrFallback
+            priority // ← add this
             zoom={2}
             className="h-full w-full"
             fallbackSrc={heroFallback}

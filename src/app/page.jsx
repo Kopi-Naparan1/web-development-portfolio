@@ -1,12 +1,21 @@
+import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/home/Hero";
-import Process from "@/components/home/Process";
 import Projects from "@/components/home/Projects";
-import Services from "@/components/home/Services";
 import SocialProof from "@/components/home/SocialProof";
-import Testimonials from "@/components/home/Testimonials";
-import Skills from "@/components/home/Skills";
-import About from "@/components/home/About";
-import Contact from "@/components/home/Contact";
+
+// import Process from "@/components/home/Process";
+// import Services from "@/components/home/Services";
+// import Testimonials from "@/components/home/Testimonials";
+// import Skills from "@/components/home/Skills";
+// import About from "@/components/home/About";
+// import Contact from "@/components/home/Contact";
+
+const Process = dynamic(() => import("@/components/home/Process"));
+const Services = dynamic(() => import("@/components/home/Services"));
+const Testimonials = dynamic(() => import("@/components/home/Testimonials"));
+const Skills = dynamic(() => import("@/components/home/Skills"));
+const About = dynamic(() => import("@/components/home/About"));
+const Contact = dynamic(() => import("@/components/home/Contact"));
 
 import { metadataForRoute } from "@/lib/metadata";
 

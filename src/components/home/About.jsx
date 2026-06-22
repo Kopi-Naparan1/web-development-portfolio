@@ -1,5 +1,3 @@
-"use client";
-
 import { SectionScreen } from "../ui/Section";
 import { PrimaryButton } from "../ui/Buttons";
 import AboutImage from "../../../public/important-assets/homepage/about/about.webp";

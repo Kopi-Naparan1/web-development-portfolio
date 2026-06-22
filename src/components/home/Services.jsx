@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { SectionScreen } from "../ui/Section";
 import { PrimaryButton } from "../ui/Buttons";

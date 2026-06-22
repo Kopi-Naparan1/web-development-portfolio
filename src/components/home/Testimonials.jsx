@@ -1,4 +1,3 @@
-"use client";
 import { SectionScreen } from "../ui/Section";
 import Image from "next/image";
 import BenPic from "../../../public/important-assets/homepage/testimonials/ben.jpg";
