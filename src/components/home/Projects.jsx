@@ -47,16 +47,19 @@ function Vignette({ isActive }) {
 }
 
 function CardVideo({ hasPlayed, isActive, src }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (isActive) videoRef.current.play();
+    else videoRef.current.pause();
+  }, [isActive]);
+
   return (
-    <div
-      className={`absolute inset-0 transition-opacity duration-200 ${
-        isActive ? "opacity-100" : "opacity-0"
-      }`}
-      style={{ willChange: "opacity" }}
-    >
+    <div className={`... ${isActive ? "opacity-100" : "opacity-0"}`}>
       {hasPlayed && (
         <video
-          autoPlay
+          ref={videoRef}
           loop
           muted
           playsInline
@@ -270,6 +273,7 @@ export default function Projects({ sectionID }) {
   return (
     <SectionScreen
       id={sectionID}
+      minHeightClass="min-h-[85vh] md:min-h-screen"
       className="bg-secondary/15"
       eyebrow="SELECTED WORKS"
       heading="Projects that deliver results"
@@ -282,7 +286,7 @@ export default function Projects({ sectionID }) {
         ))}
       </div>
 
-      <div className="md:hidden flex flex-col items-center h-full justify-evenly">
+      <div className="md:hidden flex flex-col items-center h-full justify-center gap-12">
         <ProjectCard key={projects[0].slug} project={projects[0]} mobile />
         <div className="flex gap-4 justify-center">
           <ProjectCard key={projects[1].slug} project={projects[1]} mobile />

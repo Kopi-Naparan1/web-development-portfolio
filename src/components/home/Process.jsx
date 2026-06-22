@@ -336,7 +336,7 @@ export default function Process({ sectionID }) {
       subheading={
         "From first message to launch day, here's what working with me looks like"
       }
-      minHeightClass={"h-[75vh]"}
+      minHeightClass={"min-h-[95vh] md:h-[75vh]"}
       childrenClassName="w-full h-full"
     >
       <ol

@@ -216,6 +216,7 @@ export default function Testimonials({ sectionID }) {
   return (
     <SectionScreen
       eyebrow={"kind words"}
+      minHeightClass={"min-h-[75vh] md:min-h-screen"}
       id={sectionID}
       heading={"Don't just take my word for it"}
     >
