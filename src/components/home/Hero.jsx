@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { PrimaryButton } from "../ui/Buttons";
 import heroFallback from "../../../public/important-assets/homepage/hero/hero.webp";
-
+import { useInView } from "react-intersection-observer";
 const Spline = dynamic(() => import("@splinetool/react-spline"), {
   ssr: false,
-  loading: () => null,
 });
 
 const SPLINE_SCENE =
@@ -21,29 +20,25 @@ function setSplineZoom(zoom) {
 function SplineOrFallback({ zoom, className, fallbackSrc, priority = false }) {
   const [splineReady, setSplineReady] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const containerRef = useRef(null);
+  const [loadSpline, setLoadSpline] = useState(false);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    rootMargin: "200px",
+  });
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadSpline(true);
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    // Wait until the container actually has non-zero dimensions
-    const observer = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const { width, height } = entry.contentRect;
-        if (width > 0 && height > 0) {
-          setMounted(true);
-          observer.disconnect();
-        }
-      }
-    });
-
-    observer.observe(el);
-    return () => observer.disconnect();
+    setMounted(true);
   }, []);
 
   return (
-    <div ref={containerRef} className={`relative ${className}`}>
+    <div ref={ref} className={`relative ${className}`}>
       {/* Fallback image */}
       <div
         className={`absolute inset-0 transition-opacity duration-700 ${
@@ -61,7 +56,7 @@ function SplineOrFallback({ zoom, className, fallbackSrc, priority = false }) {
       </div>
 
       {/* Spline only mounts once container has real pixel dimensions */}
-      {mounted && (
+      {mounted && inView && (
         <div
           className={`absolute inset-0 transition-opacity duration-700 ${
             splineReady ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -118,7 +113,7 @@ export function HeroSection({ sectionID }) {
 
           <div className="col-span-4 h-full w-full">
             <SplineOrFallback
-              zoom={3}
+              zoom={6}
               className="h-full w-full"
               fallbackSrc={heroFallback}
               priority

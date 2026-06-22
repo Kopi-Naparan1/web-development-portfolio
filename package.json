@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^16.2.9",
     "@splinetool/react-spline": "^4.1.0",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.17.0",

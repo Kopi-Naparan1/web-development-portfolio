@@ -36,17 +36,29 @@ function HoverHintIcon({ isActive }) {
   );
 }
 
-function Vignette({ isActive }) {
+// Two flavors: the normal "active/playing" vignette, and a slightly
+// different "loading" vignette shown while we're active but the video
+// hasn't actually started playing a frame yet. Keeping them visually
+// distinct (loading = dimmer + a touch of blur) signals "still working
+// on it" instead of looking like a stuck/broken hover state.
+function Vignette({ isActive, isLoading }) {
   return (
-    <div
-      className={`absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/15 to-black/50 transition-opacity duration-200 ${
-        isActive ? "opacity-100" : "opacity-0"
-      }`}
-    />
+    <>
+      <div
+        className={`absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/15 to-black/50 transition-opacity duration-200 ${
+          isActive && !isLoading ? "opacity-100" : "opacity-0"
+        }`}
+      />
+      <div
+        className={`absolute inset-0 z-20 bg-gradient-to-t from-black/95 via-black/35 to-black/60 backdrop-blur-[1px] transition-opacity duration-200 ${
+          isLoading ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    </>
   );
 }
 
-function CardVideo({ hasPlayed, isActive, src }) {
+function CardVideo({ hasPlayed, isActive, isVideoPlaying, src, onPlaying }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -56,13 +68,18 @@ function CardVideo({ hasPlayed, isActive, src }) {
   }, [isActive]);
 
   return (
-    <div className={`... ${isActive ? "opacity-100" : "opacity-0"}`}>
+    <div
+      className={`absolute inset-0 z-0 transition-opacity duration-200 ${
+        isVideoPlaying ? "opacity-100" : "opacity-0"
+      }`}
+    >
       {hasPlayed && (
         <video
           ref={videoRef}
           loop
           muted
           playsInline
+          onPlaying={onPlaying}
           className="object-cover w-full h-full rounded-lg"
           src={src}
         />
@@ -71,7 +88,10 @@ function CardVideo({ hasPlayed, isActive, src }) {
   );
 }
 
-function CardStaticImage({ project, mobile, isActive }) {
+// Sits above the video (z-10) so it covers any blank/black frame while the
+// video is still loading. Only fades out once isVideoPlaying is true —
+// i.e. the video has actually started rendering a frame.
+function CardStaticImage({ project, mobile, isVideoPlaying }) {
   return (
     <div className="absolute inset-0 z-10">
       <Image
@@ -79,8 +99,8 @@ function CardStaticImage({ project, mobile, isActive }) {
         src={project.static}
         alt={project.alt}
         sizes={mobile ? "40vw" : "26vw"}
-        className={`object-cover rounded-lg transition-opacity duration-200 ${
-          isActive ? "opacity-0" : "opacity-100"
+        className={`object-cover rounded-lg transition-opacity duration-300 ${
+          isVideoPlaying ? "opacity-0" : "opacity-100"
         }`}
       />
     </div>
@@ -160,6 +180,7 @@ function DesktopTitleBlock({ project, isActive, liveUrl, onStopPropagation }) {
 function ProjectCard({ project, mobile = false }) {
   const [isActive, setIsActive] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -182,6 +203,9 @@ function ProjectCard({ project, mobile = false }) {
 
   function handleDesktopLeave() {
     setIsActive(false);
+    // Reset so that next time it's re-entered, the image fallback shows
+    // again until the video has actually resumed playing a frame.
+    setIsVideoPlaying(false);
   }
 
   function handleMobileTap() {
@@ -189,9 +213,18 @@ function ProjectCard({ project, mobile = false }) {
     setIsActive(true);
   }
 
+  function handleVideoPlaying() {
+    setIsVideoPlaying(true);
+  }
+
   function stopPropagation(e) {
     e.stopPropagation();
   }
+
+  // "Loading" = the card is active (hovered/tapped) but the video hasn't
+  // actually started rendering a frame yet, so the image fallback is
+  // still showing.
+  const isLoading = isActive && !isVideoPlaying;
 
   return (
     <div className="flex flex-col items-center" ref={cardRef}>
@@ -208,17 +241,19 @@ function ProjectCard({ project, mobile = false }) {
         <CardVideo
           hasPlayed={hasPlayed}
           isActive={isActive}
+          isVideoPlaying={isVideoPlaying}
           src={project.vid}
+          onPlaying={handleVideoPlaying}
         />
         <CardStaticImage
           project={project}
           mobile={mobile}
-          isActive={isActive}
+          isVideoPlaying={isVideoPlaying}
         />
 
         <HoverHintIcon isActive={isActive} />
 
-        <Vignette isActive={isActive} />
+        <Vignette isActive={isActive} isLoading={isLoading} />
 
         {mobile ? (
           <>
