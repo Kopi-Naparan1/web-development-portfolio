@@ -42,12 +42,12 @@ function ServiceCard({ service, mobile = false }) {
       : service.isRoundBottom
         ? "rounded-b-2xl"
         : ""
-    : "rounded-2xl";
+    : "rounded-lg";
 
   return (
     <div
       className={`group relative overflow-hidden border-2 border-primary ${
-        mobile ? "h-[30.5%] w-[75%]" : "h-[90%] w-[32%]"
+        mobile ? "flex-1 w-[75%]" : "h-[45vh] w-[32%]"
       } ${borderRadius}`}
     >
       {/* Image */}
@@ -94,24 +94,29 @@ function ServiceCard({ service, mobile = false }) {
   );
 }
 
-export default function Services() {
+export default function Services({ sectionID }) {
   return (
     <SectionScreen
+      minHeightClass="mih-h-[60vh]"
+      id={sectionID}
+      className={"bg-secondary/15"}
       eyebrow="What i offer"
       heading="Everything you need to go live and grow"
       subheading="I specialize in one thing and do it well — building marketing sites that work."
     >
       {/* Mobile */}
-      <div className="w-full h-full flex md:hidden flex-col items-center">
-        {servicesList.map((service) => (
-          <ServiceCard key={service.title} service={service} mobile />
-        ))}
+      <div className="w-full h-full flex md:hidden flex-col items-center justify-between">
+        <div className="flex flex-col items-center gap-2 flex-1 w-full justify-center">
+          {servicesList.map((service) => (
+            <ServiceCard key={service.title} service={service} mobile />
+          ))}
+        </div>
         <PrimaryButton />
       </div>
 
       {/* Desktop */}
-      <div className="w-full h-full md:flex flex-col hidden justify-center items-center">
-        <div className="w-full h-full flex flex-row justify-between items-center">
+      <div className="w-full flex-1 md:flex flex-col hidden justify-between items-center  ">
+        <div className="w-full flex-1 flex flex-row justify-between items-center">
           {servicesList.map((service) => (
             <ServiceCard key={service.title} service={service} />
           ))}

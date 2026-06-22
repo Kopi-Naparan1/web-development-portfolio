@@ -97,12 +97,12 @@ const SubText = ({ className }) => (
   </p>
 );
 
-export function HeroSection() {
+export function HeroSection({ sectionID }) {
   return (
     <>
       {/* DESKTOP */}
-      <section className="md:sectionLayout hidden md:block">
-        <div className="grid grid-cols-10 h-full w-full items-center">
+      <section className="md:sectionLayout md:h-[95vh]  hidden " id={sectionID}>
+        <div className="grid grid-cols-10  flex-1 w-full items-center">
           <div className="col-span-5 text-left flex flex-col gap-5">
             <HeadingText className="text-[60px]" />
             <SubText className="text-[18px]" />
@@ -125,7 +125,7 @@ export function HeroSection() {
       </section>
 
       {/* MOBILE */}
-      <section className="md:hidden mobileSectionLayout">
+      <section className="md:hidden mobileSectionLayout h-[95vh]">
         <div className="flex-[1]" /> {/* spacer */}
         <div className="flex-[5] w-full min-h-0">
           <SplineOrFallback

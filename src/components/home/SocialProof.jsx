@@ -29,7 +29,7 @@ function CardMaker({ data }) {
   );
 }
 
-export default function SocialProof() {
+export default function SocialProof({ sectionID }) {
   return (
     <FlexibleSectionScreen className="flex flex-row  items-center justify-between h-[11vh] md:h-[13vh] mb-[3vh]">
       {SocialProofData.map((data, index) => (

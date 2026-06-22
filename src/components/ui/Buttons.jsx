@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { HiArrowLeft, HiArrowUpRight } from "react-icons/hi2";
+
 export function PrimaryButton({ textSize = "16px", mt = "2", className = "" }) {
   const spacingScale = {
     0: "0",
@@ -14,7 +17,7 @@ export function PrimaryButton({ textSize = "16px", mt = "2", className = "" }) {
 
   return (
     <button
-      className={`bg-primary font-jakarta text-background depth   font-semibold py-1 px-4 rounded-2xl hover:bg-secondary shadow-md hover:text-heading/80 border-2 border-transparent hover:border-primary transition-colors duration-150 cursor-pointer ${className}`}
+      className={`bg-primary font-jakarta text-background depth   font-semibold py-1 px-4 rounded-lg hover:bg-secondary shadow-md hover:text-heading/80 border-2 border-transparent hover:border-primary transition-colors duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
       Lets Chat -&gt;
@@ -26,6 +29,7 @@ export function CardPrimaryButton({
   textSize = "12px",
   mt = "2",
   className = "",
+  text = "",
 }) {
   const spacingScale = {
     0: "0",
@@ -42,7 +46,7 @@ export function CardPrimaryButton({
 
   return (
     <button
-      className={`bg-primary/50 border-2 border-transparent hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-2xl hover:bg-primary/70 shadow-md hover:text-background/80 transition-colors duration-150 cursor-pointer ${className}`}
+      className={`bg-lighter/70 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-secondary/70  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
       View Case Study -&gt;
@@ -70,10 +74,75 @@ export function CardSecondaryButton({
 
   return (
     <button
-      className={`bg-transparent font-jakarta text-heading font-medium py-1  border-secondary shadow-md border px-4 rounded-2xl  hover:bg-secondary/30  transition-colors duration-150 cursor-pointer ${className}`}
+      className={`bg-transparent font-jakarta text-heading font-medium py-1  border-secondary shadow-md border px-4 rounded-lg  hover:bg-secondary/30  transition-colors duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
       Live Site ↗
     </button>
+  );
+}
+
+export function CaseStudyPrimary({
+  liveSiteUrl,
+  textSize = "12px",
+  mt = "2",
+  className = "",
+  text = "",
+}) {
+  const spacingScale = {
+    0: "0",
+    1: "0.25rem",
+    2: "0.5rem",
+    3: "0.75rem",
+    4: "1rem",
+    5: "1.25rem",
+    6: "1.5rem",
+    8: "2rem",
+  };
+
+  const marginTop = spacingScale[mt] ?? mt;
+
+  return (
+    <a
+      href={liveSiteUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex flex-row gap 1 justify-center items-center bg-primary/30 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-primary/50  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
+      style={{ fontSize: textSize, marginTop }}
+    >
+      Live site
+      <HiArrowUpRight className="text-[12px]" />
+    </a>
+  );
+}
+
+export function CaseStudySecondary({
+  textSize = "12px",
+  mt = "2",
+  className = "",
+  text = "",
+}) {
+  const spacingScale = {
+    0: "0",
+    1: "0.25rem",
+    2: "0.5rem",
+    3: "0.75rem",
+    4: "1rem",
+    5: "1.25rem",
+    6: "1.5rem",
+    8: "2rem",
+  };
+
+  const marginTop = spacingScale[mt] ?? mt;
+
+  return (
+    <Link
+      href="/#works"
+      className={`flex flex-row gap-1 justify-center items-center bg-lighter/70 border-2 border-secondary/60  hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-secondary/70  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
+      style={{ fontSize: textSize, marginTop }}
+    >
+      <HiArrowLeft className="text-[12px]" />
+      Back to works
+    </Link>
   );
 }

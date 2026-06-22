@@ -94,10 +94,10 @@ function ParticleBurst({ active }) {
 }
 
 const headerCardMotionDivClassName =
-  "relative flex items-center justify-center gap-1.5 rounded-2xl px-2 md:px-3 w-[30vw] md:w-[14vw] h-[6vh] md:h-[6vh] bg-primary/80 text-background text-[14]px] md:text-[16px] font-semibold cursor-pointer shadow-[0_4px_16px_rgba(26,63,203,0.22)] overflow-visible shrink-0";
+  "relative flex items-center justify-center gap-1.5 rounded-lg px-2 md:px-3 w-[30vw] md:w-[14vw] h-[6vh] md:h-[6vh] bg-primary/30 text-heading text-[14px] md:text-[16px] font-semibold cursor-pointer shadow-[0_4px_16px_rgba(26,63,203,0.22)] overflow-visible shrink-0";
 
 const skillCardMotionDivClassName =
-  "flex items-center justify-center gap-1.5 rounded-[12px] px-2 md:px-3 w-[26vw] md:w-[12vw] h-[5vh] md:h-[5vh] bg-lighter text-primary text-[13px] md:text-[16px] font-medium cursor-default select-none shrink-0";
+  "flex items-center justify-center gap-1.5 rounded-[12px] px-2 md:px-3 w-[26vw] md:w-[12vw] h-[5vh] md:h-[5vh] bg-lighter/70 text-heading/80 text-[13px] md:text-[16px] font-medium cursor-default select-none shrink-0";
 
 function HeaderCard({ icon: Icon, label, open, onClick }) {
   const [hovered, setHovered] = useState(false);
@@ -155,7 +155,7 @@ function SkillCard({ icon: Icon, name }) {
   );
 }
 
-export default function Skills() {
+export default function Skills({ sectionID }) {
   const [openCols, setOpenCols] = useState([0, 1, 2]);
 
   const toggle = (i) =>
@@ -165,7 +165,9 @@ export default function Skills() {
 
   return (
     <SectionScreenCut
+      className={"bg-secondary/15"}
       eyebrow="tech stack"
+      id={sectionID}
       heading="tools i work with"
       subheading="Modern, fast, and built to scale — everything I use is production-ready."
     >

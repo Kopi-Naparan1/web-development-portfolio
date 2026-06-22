@@ -1,19 +1,25 @@
 export function SectionScreen({
   eyebrow,
   heading,
+  id,
   subheading,
   headerPosition = "center",
   childrenClassName = "",
+  eyebrowClassName = "",
   ref,
+  minHeightClass = "min-h-screen", // NEW — default keeps old behavior
   className,
   children,
 }) {
   return (
     <section
+      id={id}
       ref={ref}
-      className={`md:sectionLayout mobileSectionLayout  items-${headerPosition}   ${className}`}
+      className={`md:sectionLayout mobileSectionLayout   ${className} items-${headerPosition} ${minHeightClass}   `}
     >
-      <div className="flex flex-col text-center gap-2  w-full">
+      <div
+        className={`flex flex-col text-center gap-2  w-full ${eyebrowClassName}`}
+      >
         {eyebrow && <p className="md:eyebrow mobileEyebrow">{eyebrow}</p>}
         {heading && <h2 className="md:title mobileTitle">{heading}</h2>}
         {subheading && (
@@ -21,7 +27,7 @@ export function SectionScreen({
         )}
       </div>
       <div
-        className={`md:mt-[5vh]  h-full w-full mt-[3vh] ${childrenClassName}`}
+        className={`md:mt-[5vh] flex-1 w-full mt-[3vh] min-h-0 ${childrenClassName}`}
       >
         {children}
       </div>
