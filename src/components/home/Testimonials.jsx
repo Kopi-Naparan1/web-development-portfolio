@@ -1,11 +1,11 @@
 import { SectionScreen } from "../ui/Section";
 import Image from "next/image";
-import BenPic from "../../../public/important-assets/homepage/testimonials/ben.jpg";
-import HarrisPic from "../../../public/important-assets/homepage/testimonials/harris.jpg";
-import JhonPic from "../../../public/important-assets/homepage/testimonials/jhon.jpg";
-import KenPic from "../../../public/important-assets/homepage/testimonials/ken.jpg";
-import PryshahPic from "../../../public/important-assets/homepage/testimonials/prysh.jpg";
-import ShawnPic from "../../../public/important-assets/homepage/testimonials/shawn.jpg";
+import BenPic from "../../../public/important-assets/homepage/testimonials/ben.webp";
+import HarrisPic from "../../../public/important-assets/homepage/testimonials/harris.webp";
+import JhonPic from "../../../public/important-assets/homepage/testimonials/jhon.webp";
+import KenPic from "../../../public/important-assets/homepage/testimonials/ken.webp";
+import PryshahPic from "../../../public/important-assets/homepage/testimonials/prysh.webp";
+import ShawnPic from "../../../public/important-assets/homepage/testimonials/shawn.webp";
 
 const testimonialList = [
   {
@@ -78,6 +78,7 @@ function MobileCardMaker({ testimonial, index }) {
       <div className="mt-4 flex flex-row items-center gap-1 bg-secondary pl-2 pb-2 pt-1 rounded-b-lg">
         <div className="relative w-10 h-10">
           <Image
+            sizes="(max-width:796px) 100vw, 50vw"
             alt={`${testimonial.name} profile picture`}
             className="object-cover"
             fill
@@ -113,7 +114,7 @@ function DesktopRowMaker({ left, right, rowIndex }) {
               alt={`${left.name} profile picture`}
               className="object-cover rounded-sm"
               fill
-              sizes="40px"
+              sizes="(max-width:796px) 100vw, 50vw"
               src={left.profilePic}
             />
           </div>
@@ -137,7 +138,7 @@ function DesktopRowMaker({ left, right, rowIndex }) {
               alt={`${right.name} profile picture`}
               className="object-cover rounded-sm"
               fill
-              sizes="40px"
+              sizes="(max-width:796px) 100vw, 50vw"
               src={right.profilePic}
             />
           </div>

@@ -1,6 +1,6 @@
-import staticCafeSaBukid from "../../public/important-assets/homepage/projects/static-cafe-sa-bukid.webp";
-import staticLakeView from "../../public/important-assets/homepage/projects/static-lake-view.webp";
-import staticKalikas from "../../public/important-assets/homepage/projects/static-kalikas.webp";
+import staticCafeSaBukid from "../../public/important-assets/homepage/projects/static-cafe-sa-bukid.avif";
+import staticLakeView from "../../public/important-assets/homepage/projects/static-lake-view.avif";
+import staticKalikas from "../../public/important-assets/homepage/projects/static-kalikas.avif";
 
 export const projects = [
   {
