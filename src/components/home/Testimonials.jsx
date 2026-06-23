@@ -6,7 +6,7 @@ import JhonPic from "../../../public/important-assets/homepage/testimonials/jhon
 import KenPic from "../../../public/important-assets/homepage/testimonials/ken.webp";
 import PryshahPic from "../../../public/important-assets/homepage/testimonials/prysh.webp";
 import ShawnPic from "../../../public/important-assets/homepage/testimonials/shawn.webp";
-
+// Why does the rounded profile picture doesnt show
 const testimonialList = [
   {
     name: "Phyrshah ",

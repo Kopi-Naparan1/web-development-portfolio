@@ -125,12 +125,14 @@ export function HeroSection({ sectionID }) {
       {/* MOBILE */}
       <section className="md:hidden mobileSectionLayout h-[95vh]">
         <div className="flex-[1]" /> {/* spacer */}
-        <div className="flex-[5] w-full min-h-0">
-          <SplineOrFallback
-            priority // ← add this
-            zoom={2}
-            className="h-full w-full"
-            fallbackSrc={heroFallback}
+        <div className="flex-[5] w-full min-h-0 relative">
+          <Image
+            src={heroFallback}
+            alt="3D hero visual"
+            fill
+            className="object-contain"
+            priority
+            sizes="100vw"
           />
         </div>
         <div className="flex-[4] flex flex-col justify-center text-center w-full min-h-0">

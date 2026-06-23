@@ -31,10 +31,13 @@ export const projects = [
     vid: "/important-assets/homepage/projects/kalikas.mp4",
   },
 ];
-import CafeSaBukidHero from "../../public/important-assets/case-study-page/cafe-sa-bukid.png";
-import KalikasHero from "../../public/important-assets/case-study-page/kalikas.png";
-import LakeApoHero from "../../public/important-assets/case-study-page/lake-apo.png";
+import CafeSaBukidHero from "../../public/important-assets/case-study-page/cafe-sa-bukid.avif";
+import KalikasHero from "../../public/important-assets/case-study-page/kalikas.avif";
+import LakeApoHero from "../../public/important-assets/case-study-page/lake-apo.avif";
 import { Search, PenTool, Code, Rocket } from "lucide-react";
+import CafeSaBukidHeroMobile from "../../public/important-assets/case-study-page/cafe-sa-bukid-mobile.avif";
+import KalikasHeroMobile from "../../public/important-assets/case-study-page/kalikas-mobile.avif";
+import LakeApoHeroMobile from "../../public/important-assets/case-study-page/lake-view-mobile.avif";
 
 export const caseStudyProjects = [
   {
@@ -42,6 +45,7 @@ export const caseStudyProjects = [
     websiteDescriptionReadThisAI:
       "Since 2017 Cafe sa Bukid Great food. BUKID experience! — where every meal tastes like it was grown right outside your window.View Menu Visit Us",
     heroImage: CafeSaBukidHero,
+    mobileHeroImage: CafeSaBukidHeroMobile,
     eyebrow: "Restaurant Website",
     title: "Cafe sa Bukid",
     alt: "Cafe sa Bukid website hero image",
@@ -117,6 +121,7 @@ export const caseStudyProjects = [
     websiteDescriptionReadThisAI:
       "Bukidnon Nature Escape & Tourist Spot Lake Apo Nature Park - Cafe and Resthouse in Bukidnon Relax by scenic lake views, enjoy local food, and stay overnight in Bukidnon's peaceful natural retreat. Get Directions Explore Cafe View Resthouse",
     heroImage: LakeApoHero,
+    mobileHeroImage: LakeApoHeroMobile,
     eyebrow: "Tourism & Hospitality",
     title: "Lake View",
     alt: "Lake View website hero image",
@@ -192,6 +197,7 @@ export const caseStudyProjects = [
     websiteDescriptionReadThisAI:
       "Student Showcase KALIKAS A curated exhibition of student works exploring nature through painting, drawing, calligraphy, photography, paper art, and animation. View the Gallery Featuring landscapes, harvest scenes, and works shaped by mythology and place. Exhibit Focus The opening sequence foregrounds artworks that examine nature through labor, landscape, and folklore.",
     heroImage: KalikasHero,
+    mobileHeroImage: KalikasHeroMobile,
     eyebrow: "Digital Art Exhibition",
     title: "Kalikas",
     alt: "Kalikas website hero image",

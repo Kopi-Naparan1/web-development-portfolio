@@ -1,26 +1,29 @@
 import Image from "next/image";
-import Link from "next/link";
-import { HiArrowLeft, HiArrowUpRight } from "react-icons/hi2";
+
 import { CaseStudyPrimary } from "../ui/Buttons";
 import { CaseStudySecondary } from "../ui/Buttons";
-
 export default function CaseStudyHero({ project }) {
   return (
-    <div className="md:caseStudySectionLayout mobileSectionLayout flex flex-col items-center text-center bg-yellow-300">
-      {/* Laptop mockup image */}
-      <div className="relative w-full h-full bg-green-300">
+    <div className="md:caseStudySectionLayout mobileSectionLayout min-h-[95vh] flex flex-col items-center justify-evenly text-center bg-green-300">
+      <div className="relative w-full h-[70vh] md:h-[80vh] bg-pink-300">
+        <Image
+          src={project.mobileHeroImage || project.heroImage}
+          alt={project.alt || project.title}
+          fill
+          className="object-cover md:hidden"
+          priority
+        />
         <Image
           src={project.heroImage}
           alt={project.alt || project.title}
           fill
-          className="object-contain"
+          className="object-contain hidden md:block"
           priority
         />
       </div>
-      <div className="flex bg-pink-300 flex-col  w-full">
-        {" "}
-        {/* Eyebrow, title, subheading */}
-        <div className="flex flex-col items-center gap-1  bg-red-300 h-full">
+
+      <div className="flex flex-col w-full bg-red-300">
+        <div className="flex flex-col items-center gap-1 h-full">
           <p className="mobileEyebrow md:eyebrow">
             WEB DESIGN {project.year || "2026"}
           </p>
@@ -31,12 +34,10 @@ export default function CaseStudyHero({ project }) {
             </p>
           )}
         </div>
-        {/* CTAs */}
+
         <div className="flex flex-row gap-3 items-center justify-center">
-          <CaseStudySecondary></CaseStudySecondary>
-          <CaseStudyPrimary
-            liveSiteUrl={project.liveSiteUrl}
-          ></CaseStudyPrimary>
+          <CaseStudySecondary />
+          <CaseStudyPrimary liveSiteUrl={project.liveSiteUrl} />
         </div>
       </div>
     </div>
