@@ -7,7 +7,7 @@ import { useState, useRef, useEffect } from "react";
 import { CardPrimaryButton } from "../ui/Buttons";
 import { HiCursorClick } from "react-icons/hi";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
-
+import { useAdaptiveLoading } from "../hook/useAdaptiveLoading";
 import Link from "next/link";
 
 // ---------- Small building blocks ----------
@@ -181,6 +181,7 @@ function ProjectCard({ project, mobile = false }) {
   const [isActive, setIsActive] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const shouldLoadVideo = useAdaptiveLoading();
   const cardRef = useRef(null);
 
   useEffect(() => {
@@ -197,20 +198,19 @@ function ProjectCard({ project, mobile = false }) {
   }, [isActive, mobile]);
 
   function handleDesktopEnter() {
-    setHasPlayed(true);
+    if (shouldLoadVideo) setHasPlayed(true);
     setIsActive(true);
   }
 
+  function handleMobileTap() {
+    if (shouldLoadVideo) setHasPlayed(true);
+    setIsActive(true);
+  }
   function handleDesktopLeave() {
     setIsActive(false);
     // Reset so that next time it's re-entered, the image fallback shows
     // again until the video has actually resumed playing a frame.
     setIsVideoPlaying(false);
-  }
-
-  function handleMobileTap() {
-    setHasPlayed(true);
-    setIsActive(true);
   }
 
   function handleVideoPlaying() {
@@ -224,7 +224,7 @@ function ProjectCard({ project, mobile = false }) {
   // "Loading" = the card is active (hovered/tapped) but the video hasn't
   // actually started rendering a frame yet, so the image fallback is
   // still showing.
-  const isLoading = isActive && !isVideoPlaying;
+  const isLoading = isActive && shouldLoadVideo && !isVideoPlaying;
 
   return (
     <div className="flex flex-col items-center" ref={cardRef}>

@@ -4,8 +4,8 @@ import { CaseStudyPrimary } from "../ui/Buttons";
 import { CaseStudySecondary } from "../ui/Buttons";
 export default function CaseStudyHero({ project }) {
   return (
-    <div className="md:caseStudySectionLayout mobileSectionLayout min-h-[95vh] flex flex-col items-center justify-evenly text-center bg-green-300">
-      <div className="relative w-full h-[70vh] md:h-[80vh] bg-pink-300">
+    <div className="md:caseStudySectionLayout mobileSectionLayout min-h-[95vh] flex flex-col items-center justify-evenly text-center ">
+      <div className="relative w-full h-[70vh] md:h-[80vh] b">
         <Image
           src={project.mobileHeroImage || project.heroImage}
           alt={project.alt || project.title}
@@ -22,7 +22,7 @@ export default function CaseStudyHero({ project }) {
         />
       </div>
 
-      <div className="flex flex-col w-full bg-red-300">
+      <div className="flex flex-col w-full  ">
         <div className="flex flex-col items-center gap-1 h-full">
           <p className="mobileEyebrow md:eyebrow">
             WEB DESIGN {project.year || "2026"}

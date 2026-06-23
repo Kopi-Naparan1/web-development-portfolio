@@ -6,6 +6,8 @@ import Image from "next/image";
 import { PrimaryButton } from "../ui/Buttons";
 import heroFallback from "../../../public/important-assets/homepage/hero/hero.webp";
 import { useInView } from "react-intersection-observer";
+import { useAdaptiveLoading } from "../hook/useAdaptiveLoading";
+
 const Spline = dynamic(() => import("@splinetool/react-spline"), {
   ssr: false,
 });
@@ -13,11 +15,19 @@ const Spline = dynamic(() => import("@splinetool/react-spline"), {
 const SPLINE_SCENE =
   "https://prod.spline.design/isLz4-62pA2ya-Md/scene.splinecode";
 
+const HERO_ALT = "3D hero visual";
+
 function setSplineZoom(zoom) {
   return (spline) => spline.setZoom(zoom);
 }
 
-function SplineOrFallback({ zoom, className, fallbackSrc, priority = false }) {
+function SplineOrFallback({
+  zoom,
+  className,
+  fallbackSrc,
+  priority = false,
+  forceFallback = false,
+}) {
   const [splineReady, setSplineReady] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [loadSpline, setLoadSpline] = useState(false);
@@ -25,17 +35,19 @@ function SplineOrFallback({ zoom, className, fallbackSrc, priority = false }) {
     triggerOnce: true,
     rootMargin: "200px",
   });
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoadSpline(true);
-    }, 800);
 
+  // Small grace period before even attempting Spline, so it never
+  // competes with the very first paint / above-the-fold content.
+  useEffect(() => {
+    const timer = setTimeout(() => setLoadSpline(true), 800);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const shouldAttemptSpline = !forceFallback && mounted && inView && loadSpline;
 
   return (
     <div ref={ref} className={`relative ${className}`}>
@@ -47,7 +59,7 @@ function SplineOrFallback({ zoom, className, fallbackSrc, priority = false }) {
       >
         <Image
           src={fallbackSrc}
-          alt="3D hero visual"
+          alt={HERO_ALT}
           fill
           className="object-contain"
           priority={priority}
@@ -55,8 +67,10 @@ function SplineOrFallback({ zoom, className, fallbackSrc, priority = false }) {
         />
       </div>
 
-      {/* Spline only mounts once container has real pixel dimensions */}
-      {mounted && inView && (
+      {/* Spline only mounts once container has real pixel dimensions,
+          the grace period has passed, and we haven't been told to
+          skip it (e.g. slow connection / low-end device) */}
+      {shouldAttemptSpline && (
         <div
           className={`absolute inset-0 transition-opacity duration-700 ${
             splineReady ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -75,6 +89,7 @@ function SplineOrFallback({ zoom, className, fallbackSrc, priority = false }) {
     </div>
   );
 }
+
 const HeadingText = ({ className }) => (
   <h1
     className={`font-jakarta tracking-[-0.02em] leading-[1.1] capitalize font-extrabold text-heading ${className}`}
@@ -93,14 +108,18 @@ const SubText = ({ className }) => (
 );
 
 export function HeroSection({ sectionID }) {
+  // Desktop-only concern: should we even attempt to load the heavy
+  // Spline scene, or just stick with the static image?
+  const shouldLoadHeavy = useAdaptiveLoading();
+
   return (
     <>
       {/* DESKTOP */}
       <section
-        className="md:sectionLayout md:h-[95vh]  hidden md:block"
+        className="md:sectionLayout md:h-[95vh] hidden md:block"
         id={sectionID}
       >
-        <div className="grid grid-cols-10  h-full w-full items-center ">
+        <div className="grid grid-cols-10 h-full w-full items-center">
           <div className="col-span-5 text-left flex flex-col gap-5">
             <HeadingText className="text-[60px]" />
             <SubText className="text-[18px]" />
@@ -117,18 +136,19 @@ export function HeroSection({ sectionID }) {
               className="h-full w-full"
               fallbackSrc={heroFallback}
               priority
+              forceFallback={!shouldLoadHeavy}
             />
           </div>
         </div>
       </section>
 
-      {/* MOBILE */}
+      {/* MOBILE — always static image, Spline never attempted */}
       <section className="md:hidden mobileSectionLayout h-[95vh]">
         <div className="flex-[1]" /> {/* spacer */}
         <div className="flex-[5] w-full min-h-0 relative">
           <Image
             src={heroFallback}
-            alt="3D hero visual"
+            alt={HERO_ALT}
             fill
             className="object-contain"
             priority
