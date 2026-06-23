@@ -10,7 +10,7 @@ const servicesList = [
       "Slow site killing your conversions? I'll audit and rebuild your front end for speed, SEO, and a better user experience.",
     isRoundTop: true,
     isRoundBottom: false,
-    image: "/important-assets/homepage/services/performance-optimization1.webp",
+    image: "/important-assets/homepage/services/performance-optimization1.avif",
   },
   {
     title: "Marketing Sites",
@@ -19,7 +19,7 @@ const servicesList = [
       "Multi-section websites for small businesses that need a professional online presence that actually brings in clients.",
     isRoundTop: false,
     isRoundBottom: false,
-    image: "/important-assets/homepage/services/landing-pages1.webp",
+    image: "/important-assets/homepage/services/landing-pages1.avif",
   },
   {
     title: "Landing Page",
@@ -28,7 +28,7 @@ const servicesList = [
       "A focused, high-converting single page built to capture leads, promote a product, or launch an idea — fast.",
     isRoundTop: false,
     isRoundBottom: true,
-    image: "/important-assets/homepage/services/marketing-sites1.webp",
+    image: "/important-assets/homepage/services/marketing-sites1.avif",
   },
 ];
 
