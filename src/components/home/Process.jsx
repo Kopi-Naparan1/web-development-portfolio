@@ -1,5 +1,3 @@
-"use client";
-
 import { SectionScreen } from "../ui/Section";
 import { Search, PenTool, Code, Rocket } from "lucide-react";
 
