@@ -32,7 +32,13 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# Local environment variables (Contains secrets)
+.env*.local
 
+# Other environment files
+.env
+.env.development
+.env.production
 # vercel
 .vercel
 
