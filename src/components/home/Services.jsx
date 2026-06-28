@@ -89,7 +89,7 @@ export default function Services({ sectionID }) {
     <SectionScreen
       minHeightClass="min-h-[80vh] md:min-h-[70vh]"
       id={sectionID}
-      className="bg-secondary/15"
+      className="bg-secondary/15 py-[5vh]"
       eyebrow="What I offer"
       heading="Everything you need to go live and grow"
       subheading="I specialize in one thing and do it well — building marketing sites that work."

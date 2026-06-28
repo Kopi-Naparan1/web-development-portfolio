@@ -63,7 +63,7 @@ function TestimonialCard({ testimonial, translateX = 0 }) {
   return (
     <div
       style={{ transform: `translateX(${translateX}vw)` }}
-      className="w-[28%] rounded-xl bg-lighter shadow-sm flex flex-col
+      className="w-[28%] rounded-xl bg-lighter shadow-sm flex flex-col py-[5vh]
         transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-md"
     >
       {/* Quote icon */}

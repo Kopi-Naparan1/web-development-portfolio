@@ -155,7 +155,7 @@ export default function Contact({ sectionID }) {
     <SectionScreen
       minHeightClass="min-h-[85vh]"
       id={sectionID}
-      className="md:flex-row! md:items-center md:justify-between bg-secondary/15"
+      className="md:flex-row! md:items-center md:justify-between bg-secondary/15 py-[5vh]"
       eyebrowClassName="md:text-left md:max-w-[40%]"
       childrenClassName="flex items-center justify-center w-full md:max-w-[50%]"
       eyebrow={"Get in touch"}

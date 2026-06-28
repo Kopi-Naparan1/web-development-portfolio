@@ -157,7 +157,7 @@ export default function Skills({ sectionID }) {
 
   return (
     <SectionScreenCut
-      className="bg-secondary/15"
+      className="bg-secondary/15 py-[5vh]"
       eyebrow="tech stack"
       id={sectionID}
       heading="tools i work with"

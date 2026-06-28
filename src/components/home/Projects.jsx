@@ -272,7 +272,7 @@ export default function Projects({ sectionID }) {
     <SectionScreen
       id={sectionID}
       minHeightClass="min-h-[85vh] md:min-h-screen"
-      className="bg-secondary/15"
+      className="bg-secondary/15 py-[5vh]"
       eyebrow="SELECTED WORKS"
       heading="Projects that deliver results"
       subheading="A few things I've built — each one designed with a clear goal in mind"
