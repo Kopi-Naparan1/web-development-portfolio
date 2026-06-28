@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { PrimaryButton } from "../ui/Buttons";
-import { SplineOrFallback } from "./SplineOrFallback";
 import heroFallback from "../../../public/important-assets/homepage/hero/hero.webp";
 
 const HERO_ALT = "3D hero visual";
 
-// Zero hydration — pure static HTML rendered on server
 const HeadingText = ({ className }) => (
   <h1
     className={`font-jakarta tracking-[-0.02em] leading-[1.1] capitalize font-extrabold text-heading ${className}`}
@@ -14,7 +12,6 @@ const HeadingText = ({ className }) => (
   </h1>
 );
 
-// Zero hydration — pure static HTML rendered on server
 const SubText = ({ className }) => (
   <p className={`font-jakarta font-semibold text-subtext ${className}`}>
     Fast, professional marketing sites for small businesses — designed to
@@ -41,18 +38,20 @@ export function HeroSection({ sectionID }) {
 
           <div className="col-span-1" />
 
-          <div className="col-span-4 h-full w-full">
-            <SplineOrFallback
-              zoom={6}
-              className="h-full w-full"
-              fallbackSrc={heroFallback}
+          <div className="col-span-4 h-full w-full relative">
+            <Image
+              src={heroFallback}
+              alt={HERO_ALT}
+              fill
+              className="object-contain"
               priority
+              sizes="40vw"
             />
           </div>
         </div>
       </section>
 
-      {/* MOBILE — always static, Spline never attempted */}
+      {/* MOBILE */}
       <section className="md:hidden mobileSectionLayout h-[95vh]">
         <div className="flex-[1]" />
         <div className="flex-[5] w-full min-h-0 relative">
