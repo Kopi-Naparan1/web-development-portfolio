@@ -1,79 +1,11 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { PrimaryButton } from "../ui/Buttons";
+import { SplineOrFallback } from "./SplineOrFallback";
 import heroFallback from "../../../public/important-assets/homepage/hero/hero.webp";
-import { useInView } from "react-intersection-observer";
-import { useAdaptiveLoading } from "../hook/useAdaptiveLoading";
-
-const Spline = dynamic(() => import("@splinetool/react-spline"), {
-  ssr: false,
-});
-
-const SPLINE_SCENE =
-  "https://prod.spline.design/isLz4-62pA2ya-Md/scene.splinecode?v=2";
 
 const HERO_ALT = "3D hero visual";
 
-function SplineOrFallback({
-  zoom,
-  className,
-  fallbackSrc,
-  priority = false,
-  forceFallback = false,
-}) {
-  const [splineReady, setSplineReady] = useState(false);
-  const [loadSpline, setLoadSpline] = useState(false);
-  const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "100px" });
-
-  // Combined mount + grace period in one effect
-  useEffect(() => {
-    const timer = setTimeout(() => setLoadSpline(true), 400);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const shouldAttemptSpline = !forceFallback && inView && loadSpline;
-
-  return (
-    <div ref={ref} className={`relative ${className}`}>
-      {/* Fallback image */}
-      <div
-        className={`absolute inset-0 transition-opacity duration-700 ${
-          splineReady ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
-      >
-        <Image
-          src={fallbackSrc}
-          alt={HERO_ALT}
-          fill
-          className="object-contain"
-          priority={priority}
-          sizes="(max-width: 768px) 100vw, 40vw"
-        />
-      </div>
-
-      {shouldAttemptSpline && (
-        <div
-          className={`absolute inset-0 transition-opacity duration-700 ${
-            splineReady ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-          aria-hidden={!splineReady}
-        >
-          <Spline
-            scene={SPLINE_SCENE}
-            onLoad={(spline) => {
-              spline.setZoom(zoom);
-              setSplineReady(true);
-            }}
-          />
-        </div>
-      )}
-    </div>
-  );
-}
-
+// Zero hydration — pure static HTML rendered on server
 const HeadingText = ({ className }) => (
   <h1
     className={`font-jakarta tracking-[-0.02em] leading-[1.1] capitalize font-extrabold text-heading ${className}`}
@@ -82,6 +14,7 @@ const HeadingText = ({ className }) => (
   </h1>
 );
 
+// Zero hydration — pure static HTML rendered on server
 const SubText = ({ className }) => (
   <p className={`font-jakarta font-semibold text-subtext ${className}`}>
     Fast, professional marketing sites for small businesses — designed to
@@ -90,8 +23,6 @@ const SubText = ({ className }) => (
 );
 
 export function HeroSection({ sectionID }) {
-  const shouldLoadHeavy = useAdaptiveLoading();
-
   return (
     <>
       {/* DESKTOP */}
@@ -116,7 +47,6 @@ export function HeroSection({ sectionID }) {
               className="h-full w-full"
               fallbackSrc={heroFallback}
               priority
-              forceFallback={!shouldLoadHeavy}
             />
           </div>
         </div>
