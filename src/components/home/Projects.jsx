@@ -1,5 +1,5 @@
 "use client";
-// C:\Users\Admin\Downloads\PROGRAMMING\2026\Q2\WebDevPortfolio\my-app\src\components\home\Projects.jsx
+
 import Image from "next/image";
 import { SectionScreen } from "../ui/Section";
 import { projects } from "../../data/project";
@@ -36,11 +36,6 @@ function HoverHintIcon({ isActive }) {
   );
 }
 
-// Two flavors: the normal "active/playing" vignette, and a slightly
-// different "loading" vignette shown while we're active but the video
-// hasn't actually started playing a frame yet. Keeping them visually
-// distinct (loading = dimmer + a touch of blur) signals "still working
-// on it" instead of looking like a stuck/broken hover state.
 function Vignette({ isActive, isLoading }) {
   return (
     <>
@@ -88,9 +83,6 @@ function CardVideo({ hasPlayed, isActive, isVideoPlaying, src, onPlaying }) {
   );
 }
 
-// Sits above the video (z-10) so it covers any blank/black frame while the
-// video is still loading. Only fades out once isVideoPlaying is true —
-// i.e. the video has actually started rendering a frame.
 function CardStaticImage({ project, mobile, isVideoPlaying }) {
   return (
     <div className="absolute inset-0 z-10">
@@ -107,25 +99,6 @@ function CardStaticImage({ project, mobile, isVideoPlaying }) {
   );
 }
 
-// Desktop: icon sits top-right, independent of the title
-function DesktopLiveSiteIcon({ liveUrl, isActive, onStopPropagation }) {
-  return (
-    <a
-      href={liveUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={onStopPropagation}
-      className={`absolute top-3 right-3 z-30 bg-background/80 hover:bg-lighter rounded-full p-2 border-2 border-secondary transition-all duration-200 ${
-        isActive
-          ? "opacity-100 scale-100"
-          : "opacity-0 scale-90 pointer-events-none"
-      }`}
-    >
-      <HiArrowTopRightOnSquare className="text-heading text-lg" />
-    </a>
-  );
-}
-
 function MobileTitleRow({ project, isActive, onStopPropagation }) {
   return (
     <a
@@ -138,17 +111,14 @@ function MobileTitleRow({ project, isActive, onStopPropagation }) {
       }`}
     >
       <span />
-      <h3
-        className={`font-semibold text-[14px] text-center text-background border-b transition-colors duration-200 ${
-          isActive ? "border-background" : "border-background/40"
-        }`}
-      >
+      <h3 className="font-semibold text-[14px] text-center text-background border-b border-background">
         {project.title}
       </h3>
       <HiArrowTopRightOnSquare className="text-background text-sm justify-self-start ml-1.5" />
     </a>
   );
 }
+
 function DesktopTitleBlock({ project, isActive, liveUrl, onStopPropagation }) {
   return (
     <div
@@ -168,7 +138,7 @@ function DesktopTitleBlock({ project, isActive, liveUrl, onStopPropagation }) {
         </h3>
         <HiArrowTopRightOnSquare className="text-background text-lg" />
       </a>
-      <p className="text-[16px] text-center font-jakarta text-background/90">
+      <p className="text-[15px] text-center text-background/90">
         {project.result}
       </p>
     </div>
@@ -202,14 +172,14 @@ function ProjectCard({ project, mobile = false }) {
     setIsActive(true);
   }
 
+  // Toggle on second tap so users can dismiss without outside click
   function handleMobileTap() {
     if (shouldLoadVideo) setHasPlayed(true);
-    setIsActive(true);
+    setIsActive((prev) => !prev);
   }
+
   function handleDesktopLeave() {
     setIsActive(false);
-    // Reset so that next time it's re-entered, the image fallback shows
-    // again until the video has actually resumed playing a frame.
     setIsVideoPlaying(false);
   }
 
@@ -221,9 +191,6 @@ function ProjectCard({ project, mobile = false }) {
     e.stopPropagation();
   }
 
-  // "Loading" = the card is active (hovered/tapped) but the video hasn't
-  // actually started rendering a frame yet, so the image fallback is
-  // still showing.
   const isLoading = isActive && shouldLoadVideo && !isVideoPlaying;
 
   return (
@@ -237,7 +204,6 @@ function ProjectCard({ project, mobile = false }) {
         }`}
       >
         <DimOverlay isActive={isActive} />
-
         <CardVideo
           hasPlayed={hasPlayed}
           isActive={isActive}
@@ -250,9 +216,7 @@ function ProjectCard({ project, mobile = false }) {
           mobile={mobile}
           isVideoPlaying={isVideoPlaying}
         />
-
         <HoverHintIcon isActive={isActive} />
-
         <Vignette isActive={isActive} isLoading={isLoading} />
 
         {mobile ? (
@@ -262,7 +226,6 @@ function ProjectCard({ project, mobile = false }) {
               isActive={isActive}
               onStopPropagation={stopPropagation}
             />
-            {/* Bottom CTA — primary button, full card width */}
             <Link
               href={`/case-study/${project.slug}`}
               onClick={stopPropagation}
@@ -273,26 +236,24 @@ function ProjectCard({ project, mobile = false }) {
               }`}
             >
               <CardPrimaryButton
-                textSize="10px"
+                textSize="12px"
                 mt="0"
                 className="w-full justify-center"
               />
             </Link>
           </>
         ) : (
-          <>
-            <DesktopTitleBlock
-              project={project}
-              isActive={isActive}
-              liveUrl={project.liveUrl}
-              onStopPropagation={stopPropagation}
-            />
-          </>
+          <DesktopTitleBlock
+            project={project}
+            isActive={isActive}
+            liveUrl={project.liveUrl}
+            onStopPropagation={stopPropagation}
+          />
         )}
       </div>
 
       {!mobile && (
-        <div className="flex w-full gap-2 mt-4 flex-row">
+        <div className="flex w-full gap-2 mt-4">
           <Link href={`/case-study/${project.slug}`} className="flex flex-1">
             <CardPrimaryButton className="flex flex-1 justify-center" />
           </Link>
@@ -305,6 +266,8 @@ function ProjectCard({ project, mobile = false }) {
 // ---------- Section ----------
 
 export default function Projects({ sectionID }) {
+  const [first, ...rest] = projects;
+
   return (
     <SectionScreen
       id={sectionID}
@@ -315,17 +278,20 @@ export default function Projects({ sectionID }) {
       subheading="A few things I've built — each one designed with a clear goal in mind"
       childrenClassName="w-full h-full"
     >
+      {/* Desktop */}
       <div className="hidden md:flex flex-row justify-evenly">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
 
+      {/* Mobile — first card full width, rest in a row */}
       <div className="md:hidden flex flex-col items-center h-full justify-center gap-12">
-        <ProjectCard key={projects[0].slug} project={projects[0]} mobile />
+        <ProjectCard project={first} mobile />
         <div className="flex gap-4 justify-center">
-          <ProjectCard key={projects[1].slug} project={projects[1]} mobile />
-          <ProjectCard key={projects[2].slug} project={projects[2]} mobile />
+          {rest.map((project) => (
+            <ProjectCard key={project.slug} project={project} mobile />
+          ))}
         </div>
       </div>
     </SectionScreen>

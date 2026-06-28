@@ -14,16 +14,16 @@ const paragraphList = [
   },
   {
     order: 3,
-    p: "When I'm not building sites, I'm probably learning varius musical instruments, reading non-fiction books, or training for an upcoming marathon.",
+    p: "When I'm not building sites, I'm probably learning various musical instruments, reading non-fiction books, or training for an upcoming marathon.",
   },
 ];
 
 function StaticItem({ children, index }) {
-  const shift = index * 4;
-  const shrink = index * 10;
+  const shift = index * 2;
+  const shrink = index * 8;
 
   return (
-    <div style={{ marginLeft: `${shift}rem`, width: `${100 - shrink}%` }}>
+    <div style={{ marginLeft: `${shift}vw`, width: `${100 - shrink}%` }}>
       {children}
     </div>
   );
@@ -33,8 +33,8 @@ export default function About({ sectionID }) {
   return (
     <SectionScreen
       id={sectionID}
-      eyebrow={"about me"}
-      heading={"A developer who thinks like a marketer"}
+      eyebrow="about me"
+      heading="A developer who thinks like a marketer"
     >
       <div className="flex flex-col md:flex-row justify-center items-center flex-1">
         {/* Image */}
@@ -48,18 +48,15 @@ export default function About({ sectionID }) {
           />
         </div>
 
-        {/* Mobile paragraphs */}
+        {/* Mobile paragraphs — all three */}
         <div className="flex flex-col gap-6 text-[14px] text-center md:hidden w-[70vw] mt-[2%]">
-          {paragraphList.map(
-            (paragraph) =>
-              paragraph.order !== 3 && (
-                <p key={paragraph.order}>{paragraph.p}</p>
-              ),
-          )}
+          {paragraphList.map((paragraph) => (
+            <p key={paragraph.order}>{paragraph.p}</p>
+          ))}
         </div>
 
         {/* Desktop paragraphs */}
-        <div className="hidden md:flex flex-col text-[20px] text-left w-full mt-[2%]">
+        <div className="hidden md:flex flex-col text-[16px] text-left w-full mt-[2%]">
           <div className="flex flex-col gap-[3vh]">
             {paragraphList.map((paragraph, index) => (
               <StaticItem key={paragraph.order} index={index}>

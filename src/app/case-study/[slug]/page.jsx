@@ -5,6 +5,9 @@ import { metadataForRoute } from "@/lib/metadata";
 import { notFound } from "next/navigation";
 import CaseStudyHero from "@/components/case-study/CaseStudyHero";
 import HowIWork from "@/components/case-study/HowIWork";
+import HowItCameTogether from "@/components/case-study/HowItCameTogether";
+import TheOutcome from "@/components/case-study/TheOutcome";
+import NextCTA from "@/components/case-study/NextCTA";
 
 export const metadata = metadataForRoute("/case-study");
 
@@ -23,10 +26,13 @@ export default async function CaseStudyPage({ params }) {
   }
   const process = project.process;
   return (
-    <main>
+    <main className="flex flex-col gap-[10vh] md:gap-0">
       <CaseStudyHero project={project}></CaseStudyHero>
+
+      <HowItCameTogether slug={slug}></HowItCameTogether>
       <HowIWork slug={slug}></HowIWork>
-      <CaseStudyHero project={project}></CaseStudyHero>
+      <TheOutcome slug={slug}></TheOutcome>
+      <NextCTA slug={slug}></NextCTA>
     </main>
   );
 }

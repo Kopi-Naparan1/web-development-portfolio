@@ -16,12 +16,13 @@ export function PrimaryButton({ textSize = "16px", mt = "2", className = "" }) {
   const marginTop = spacingScale[mt] ?? mt;
 
   return (
-    <button
+    <Link
+      href={"/#contact"}
       className={`bg-primary font-jakarta text-background depth   font-semibold py-1 px-4 rounded-lg hover:bg-secondary shadow-md hover:text-heading/80 border-2 border-transparent hover:border-primary transition-colors duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
       Lets Chat -&gt;
-    </button>
+    </Link>
   );
 }
 

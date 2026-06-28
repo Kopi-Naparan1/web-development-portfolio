@@ -14,10 +14,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/#home" },
+  { label: "Work", href: "/#works" },
+  { label: "About", href: "/#about" },
 ];
 const socialLinks = [
   {
@@ -27,7 +26,7 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/yourhandle",
+    href: "https://linkedin.com/in/kopi-anan-pasco-naparan-0043b3361",
     icon: <FaLinkedin />,
   },
   {
@@ -37,7 +36,7 @@ const socialLinks = [
   },
   {
     label: "Instagram",
-    href: "https://instagram.com/yourhandle",
+    href: "https://instagram.com/nyro_k1",
     icon: <FaInstagram />,
   },
   {
@@ -82,7 +81,10 @@ export default function Footer() {
           </a>
         ))}
       </div>
-      <p className="text-[10px] text-subtext/80 mt-6">2026 @ copyrights</p>
+      <p className="text-[10px] text-subtext/80 mt-6 text-center">
+        Note: The testimonials, projects, and case studies shown here are for
+        demonstration purposes. This site is a portfolio practice build.
+      </p>
     </div>
   );
 }

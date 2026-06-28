@@ -17,10 +17,6 @@ const SPLINE_SCENE =
 
 const HERO_ALT = "3D hero visual";
 
-function setSplineZoom(zoom) {
-  return (spline) => spline.setZoom(zoom);
-}
-
 function SplineOrFallback({
   zoom,
   className,
@@ -29,25 +25,16 @@ function SplineOrFallback({
   forceFallback = false,
 }) {
   const [splineReady, setSplineReady] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [loadSpline, setLoadSpline] = useState(false);
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    rootMargin: "200px",
-  });
+  const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "100px" });
 
-  // Small grace period before even attempting Spline, so it never
-  // competes with the very first paint / above-the-fold content.
+  // Combined mount + grace period in one effect
   useEffect(() => {
-    const timer = setTimeout(() => setLoadSpline(true), 800);
+    const timer = setTimeout(() => setLoadSpline(true), 400);
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const shouldAttemptSpline = !forceFallback && mounted && inView && loadSpline;
+  const shouldAttemptSpline = !forceFallback && inView && loadSpline;
 
   return (
     <div ref={ref} className={`relative ${className}`}>
@@ -67,9 +54,6 @@ function SplineOrFallback({
         />
       </div>
 
-      {/* Spline only mounts once container has real pixel dimensions,
-          the grace period has passed, and we haven't been told to
-          skip it (e.g. slow connection / low-end device) */}
       {shouldAttemptSpline && (
         <div
           className={`absolute inset-0 transition-opacity duration-700 ${
@@ -80,7 +64,7 @@ function SplineOrFallback({
           <Spline
             scene={SPLINE_SCENE}
             onLoad={(spline) => {
-              setSplineZoom(zoom)(spline);
+              spline.setZoom(zoom);
               setSplineReady(true);
             }}
           />
@@ -99,30 +83,26 @@ const HeadingText = ({ className }) => (
 );
 
 const SubText = ({ className }) => (
-  <p
-    className={`font-jakarta tracking-widest font-semibold text-subtext ${className}`}
-  >
+  <p className={`font-jakarta font-semibold text-subtext ${className}`}>
     Fast, professional marketing sites for small businesses — designed to
     convert and built to last
   </p>
 );
 
 export function HeroSection({ sectionID }) {
-  // Desktop-only concern: should we even attempt to load the heavy
-  // Spline scene, or just stick with the static image?
   const shouldLoadHeavy = useAdaptiveLoading();
 
   return (
     <>
       {/* DESKTOP */}
       <section
-        className="md:sectionLayout md:h-[95vh] hidden md:block"
+        className="sectionLayout md:h-[95vh] hidden md:block"
         id={sectionID}
       >
         <div className="grid grid-cols-10 h-full w-full items-center">
           <div className="col-span-5 text-left flex flex-col gap-5">
             <HeadingText className="text-[60px]" />
-            <SubText className="text-[18px]" />
+            <SubText className="text-[18px] tracking-widest" />
             <div className="flex">
               <PrimaryButton />
             </div>
@@ -142,9 +122,9 @@ export function HeroSection({ sectionID }) {
         </div>
       </section>
 
-      {/* MOBILE — always static image, Spline never attempted */}
+      {/* MOBILE — always static, Spline never attempted */}
       <section className="md:hidden mobileSectionLayout h-[95vh]">
-        <div className="flex-[1]" /> {/* spacer */}
+        <div className="flex-[1]" />
         <div className="flex-[5] w-full min-h-0 relative">
           <Image
             src={heroFallback}
@@ -157,8 +137,8 @@ export function HeroSection({ sectionID }) {
         </div>
         <div className="flex-[4] flex flex-col justify-center text-center w-full min-h-0">
           <div className="gap-2 flex flex-col">
-            <HeadingText className="text-[40px]" />
-            <SubText className="text-[14px]" />
+            <HeadingText className="text-[30px]" />
+            <SubText className="text-[13px] tracking-wide" />
             <div className="flex w-full justify-center">
               <PrimaryButton />
             </div>

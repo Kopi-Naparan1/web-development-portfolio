@@ -34,10 +34,14 @@ export const projects = [
 import CafeSaBukidHero from "../../public/important-assets/case-study-page/cafe-sa-bukid.avif";
 import KalikasHero from "../../public/important-assets/case-study-page/kalikas.avif";
 import LakeApoHero from "../../public/important-assets/case-study-page/lake-apo.avif";
-import { Search, PenTool, Code, Rocket } from "lucide-react";
+import { Telescope, LayoutTemplate, Layers, Send } from "lucide-react";
 import CafeSaBukidHeroMobile from "../../public/important-assets/case-study-page/cafe-sa-bukid-mobile.avif";
 import KalikasHeroMobile from "../../public/important-assets/case-study-page/kalikas-mobile.avif";
 import LakeApoHeroMobile from "../../public/important-assets/case-study-page/lake-view-mobile.avif";
+import Step1 from "../../public/important-assets/case-study-page/step1.avif";
+import Step2 from "../../public/important-assets/case-study-page/step2.avif";
+import Step3 from "../../public/important-assets/case-study-page/step3.avif";
+import Step4 from "../../public/important-assets/case-study-page/step4.avif";
 
 export const caseStudyProjects = [
   {
@@ -51,50 +55,71 @@ export const caseStudyProjects = [
     alt: "Cafe sa Bukid website hero image",
     subHeading:
       "Bringing a farm-to-table dining experience online for a restaurant that had outgrown its old web presence.",
-    problem:
-      "Cafe sa Bukid had built a loyal following since 2017, but their old website was outdated, hard to navigate on mobile, and didn't reflect the warmth of their farm-to-table concept. Most customers were finding them through word of mouth instead of search, and the existing site gave visitors no clear way to view the menu or plan a visit.",
-    myRole:
-      "I handled the full process end-to-end — research, wireframing, design, and development. I worked directly with the owners to translate their in-person hospitality into something that felt just as welcoming online.",
-    solutionURL: "",
+    howItCameTogetherSection: {
+      problem: [
+        "Cafe sa Bukid had built a loyal following since 2017, but their old website was outdated and hard to navigate on mobile.",
+        "The site didn't reflect the warmth of their farm-to-table concept.",
+        "Most customers were finding them through word of mouth instead of search.",
+        "Visitors had no clear way to view the menu or plan a visit.",
+      ],
+      myRole: [
+        "Handled the full process end-to-end — research, wireframing, design, and development.",
+        "Worked directly with the owners to understand their brand and hospitality.",
+        "Translated their in-person warmth into a welcoming online experience.",
+      ],
+      solutionURLMobile: CafeSaBukidHero,
+      solutionURLDesktop: CafeSaBukidHeroMobile,
+    },
+
     process: [
       {
         step: "Step 1",
         title: "Brief and Research",
-        description:
-          "Started with a short discovery call to understand the brand's story and dining experience. Looked into similar farm-to-table restaurants to see how they presented menus and location info, then mapped out the must-have pages: home, menu, and visit-us details.",
-        icon: Search,
-        supportingImage: "", //Picture of email sent asking questions
+        description: [
+          "Started with a short discovery call to understand the brand's story and dining experience.",
+          "Looked into similar farm-to-table restaurants to see how they presented menus and location info.",
+          "Mapped out the must-have pages: home, menu, and visit-us details.",
+        ],
+        icon: Telescope,
+        supportingImage: Step1,
         leftSideDesign: false,
         rightSideDesign: true,
       },
       {
-        step: "Step 2 ",
-        title: "Wireframes and Structre",
-        description:
-          "Sketched a simple structure prioritizing the menu and visit information above the fold, since that's what most visitors were searching for. Kept the navigation to three core actions: View Menu, Visit Us, and a way to see the space itself through photos.",
-        icon: PenTool,
-        supportingImage: "",
-        leftSideDesign: true, // ss of portfolio website wireframe
+        step: "Step 2",
+        title: "Wireframes and Structure",
+        description: [
+          "Sketched a simple structure prioritizing the menu and visit information above the fold.",
+          "Kept navigation to three core actions: View Menu, Visit Us, and a photo gallery of the space.",
+        ],
+        icon: LayoutTemplate,
+        supportingImage: Step2,
+        leftSideDesign: true,
         rightSideDesign: true,
       },
       {
         step: "Step 3",
         title: "Design and Build",
-        description:
-          "Built the site in Next.js with a warm, earthy color palette to match the cafe's rustic setting. Used large, appetizing food photography as the visual anchor and made sure the menu was readable and scannable on mobile, since most visitors check it on their phones before heading out.",
-        icon: Code,
-        supportingImage: "", //ss of dev pics code
+        description: [
+          "Built the site in Next.js with a warm, earthy color palette to match the cafe's rustic setting.",
+          "Used large food photography as the visual anchor throughout.",
+          "Made the menu readable and scannable on mobile, since most visitors check it on their phones before heading out.",
+        ],
+        icon: Layers,
+        supportingImage: Step3,
         leftSideDesign: true,
         rightSideDesign: true,
       },
       {
         step: "Step 4",
         title: "Review and Launch",
-        description:
-          "Ran the site by the owners for a content review, made small copy adjustments based on their feedback, then tested across devices before launch. Monitored loading speed and mobile usability in the first two weeks post-launch.",
-
-        icon: Rocket,
-        supportingImage: "", // ss of vercel upload or deploy note: icon hovered, that image will show in the bg
+        description: [
+          "Ran the site by the owners for a content review and made copy adjustments based on their feedback.",
+          "Tested across devices before launch.",
+          "Monitored loading speed and mobile usability in the first two weeks post-launch.",
+        ],
+        icon: Send,
+        supportingImage: Step4,
         leftSideDesign: true,
         rightSideDesign: false,
       },
@@ -127,51 +152,67 @@ export const caseStudyProjects = [
     alt: "Lake View website hero image",
     subHeading:
       "Redesigning a nature park's online presence to match the peaceful experience guests find on-site.",
-    problem:
-      "Lake Apo Nature Park offers a scenic lakeside escape with a cafe and resthouse, but their previous website loaded slowly and scored poorly on performance audits — undercutting first impressions for visitors researching a getaway. There was also no clear path for guests to get directions, browse the cafe, or check resthouse details.",
-    myRole:
-      "I led a full redesign and performance overhaul, focusing on both visual storytelling and technical optimization so the site felt as relaxing to browse as the park is to visit.",
-    solutionURL: "",
+    howItCameTogetherSection: {
+      problem: [
+        "Lake Apo Nature Park offers a scenic lakeside escape with a cafe and resthouse.",
+        "Their previous website loaded slowly and scored poorly on performance audits — undercutting first impressions for visitors.",
+        "No clear path for guests to get directions, browse the cafe, or check resthouse details.",
+      ],
+      myRole: [
+        "Led a full redesign and performance overhaul of the site.",
+        "Focused on visual storytelling to reflect the park's relaxing atmosphere.",
+        "Optimized technical performance so the site loads fast and scores well on audits.",
+      ],
+      solutionURLMobile: LakeApoHero,
+      solutionURLDesktop: LakeApoHeroMobile,
+    },
 
     process: [
       {
         step: "Step 1",
         title: "Brief and Research",
-        description:
-          "Audited the existing site's performance bottlenecks — oversized images and unoptimized assets were the main culprits. Researched how other nature park and resort sites balanced rich visuals with fast load times.",
-        supportingImage: "", //Picture of email sent asking questions
-        icon: Search,
+        description: [
+          "Audited the existing site's performance bottlenecks — oversized images and unoptimized assets were the main culprits.",
+          "Researched how other nature park and resort sites balanced rich visuals with fast load times.",
+        ],
+        supportingImage: Step1,
+        icon: Telescope,
         leftSideDesign: false,
         rightSideDesign: true,
       },
       {
-        step: "Step 2 ",
-        title: "Wireframes and Structre",
-        description:
-          "Prioritized three clear actions above the fold: Get Directions, Explore Cafe, and View Resthouse, since these mirrored what most visitors were searching for. Wireframed a single-page scroll structure to keep the experience simple for guests planning a visit on mobile.",
-        supportingImage: "",
-        icon: PenTool,
-        leftSideDesign: true, // ss of portfolio website wireframe
+        step: "Step 2",
+        title: "Wireframes and Structure",
+        description: [
+          "Prioritized three clear actions above the fold: Get Directions, Explore Cafe, and View Resthouse.",
+          "Wireframed a single-page scroll structure to keep the experience simple for guests planning a visit on mobile.",
+        ],
+        supportingImage: Step2,
+        icon: LayoutTemplate,
+        leftSideDesign: true,
         rightSideDesign: true,
       },
       {
         step: "Step 3",
         title: "Design and Build",
-        description:
-          "Rebuilt the site in Next.js with optimized, responsive images and lazy loading for below-the-fold content. Used a calm, natural color palette and large lake photography to immediately set the tone before guests even arrive.",
-        icon: Code,
-        supportingImage: "", //ss of dev pics code
+        description: [
+          "Rebuilt the site in Next.js with optimized, responsive images and lazy loading for below-the-fold content.",
+          "Used a calm, natural color palette and large lake photography to set the tone before guests even arrive.",
+        ],
+        supportingImage: Step3,
+        icon: Layers,
         leftSideDesign: true,
         rightSideDesign: true,
       },
       {
         step: "Step 4",
         title: "Review and Launch",
-        description:
-          "Ran Lighthouse audits before and after launch to confirm the performance gains, then reviewed the live site with the park's management team to make sure the cafe and resthouse info stayed accurate and up to date.",
-
-        icon: Rocket,
-        supportingImage: "", // ss of vercel upload or deploy note: icon hovered, that image will show in the bg
+        description: [
+          "Ran Lighthouse audits before and after launch to confirm the performance gains.",
+          "Reviewed the live site with the park's management team to make sure cafe and resthouse info stayed accurate.",
+        ],
+        supportingImage: Step4,
+        icon: Send,
         leftSideDesign: true,
         rightSideDesign: false,
       },
@@ -203,51 +244,68 @@ export const caseStudyProjects = [
     alt: "Kalikas website hero image",
     subHeading:
       "A digital exhibition giving 9 student artists a gallery-quality space to showcase their work online.",
-    problem:
-      "The students behind Kalikas had a curated collection exploring nature through painting, calligraphy, photography, and animation — but no way to present it as a cohesive exhibition outside of a physical gallery space. They needed something that felt like walking through a gallery, not just a folder of images.",
-    myRole:
-      "I was responsible for designing and building the digital exhibition, working closely with the curators to understand the narrative they wanted each section to tell, from landscapes to harvest scenes to mythology-inspired pieces.",
-    solutionURL: "",
 
+    howItCameTogetherSection: {
+      problem: [
+        "The students behind Kalikas had a curated collection exploring nature through painting, calligraphy, photography, and animation.",
+        "No way to present it as a cohesive exhibition outside of a physical gallery space.",
+        "They needed something that felt like walking through a gallery, not just a folder of images.",
+      ],
+      myRole: [
+        "Designed and built the digital exhibition from the ground up.",
+        "Worked closely with the curators to understand the narrative each section needed to tell.",
+        "Covered diverse themes — from landscapes to harvest scenes to mythology-inspired pieces.",
+      ],
+      solutionURLMobile: KalikasHero,
+      solutionURLDesktop: KalikasHeroMobile,
+    },
     process: [
       {
         step: "Step 1",
         title: "Brief and Research",
-        description:
-          "Reviewed the full collection and grouped works by theme rather than by medium, since the curators wanted visitors to feel an emotional arc rather than just browse categories. Looked at how online museums and digital galleries structure viewing sequences for inspiration.",
-        supportingImage: "", //Picture of email sent asking questions
-        icon: Search,
+        description: [
+          "Reviewed the full collection and grouped works by theme rather than by medium.",
+          "Curators wanted visitors to feel an emotional arc rather than just browse categories.",
+          "Looked at how online museums and digital galleries structure viewing sequences for inspiration.",
+        ],
+        supportingImage: Step1,
+        icon: Telescope,
         leftSideDesign: false,
         rightSideDesign: true,
       },
       {
-        step: "Step 2 ",
-        title: "Wireframes and Structre",
-        description:
-          "Structured the site as a sequential journey — opening with labor and landscape pieces, moving into harvest and mythology themes. Wireframed a gallery-style grid that could flex between mediums (paintings, photography, paper art) without feeling inconsistent.",
-        leftSideDesign: true, // ss of portfolio website wireframe
-        supportingImage: "",
-        icon: PenTool,
+        step: "Step 2",
+        title: "Wireframes and Structure",
+        description: [
+          "Structured the site as a sequential journey — opening with labor and landscape pieces, moving into harvest and mythology themes.",
+          "Wireframed a gallery-style grid that could flex between mediums without feeling inconsistent.",
+        ],
+        supportingImage: Step2,
+        icon: LayoutTemplate,
+        leftSideDesign: true,
         rightSideDesign: true,
       },
       {
         step: "Step 3",
         title: "Design and Build",
-        description:
-          "Built a minimal, gallery-inspired layout in Next.js with generous white space so each artwork could stand on its own. Added smooth scroll-triggered transitions between exhibit sections to mimic the feeling of moving through a physical gallery space.",
-        icon: Code,
-        supportingImage: "", //ss of dev pics code
+        description: [
+          "Built a minimal, gallery-inspired layout in Next.js with generous white space so each artwork could stand on its own.",
+          "Added smooth scroll-triggered transitions between exhibit sections to mimic moving through a physical gallery.",
+        ],
+        supportingImage: Step3,
+        icon: Layers,
         leftSideDesign: true,
         rightSideDesign: true,
       },
       {
         step: "Step 4",
         title: "Review and Launch",
-        description:
-          "Walked through the live site with the curators and a few contributing artists to confirm each piece was presented the way they envisioned. Made final adjustments to image quality and section pacing before the exhibition went live.",
-
-        icon: Rocket,
-        supportingImage: "", // ss of vercel upload or deploy note: icon hovered, that image will show in the bg
+        description: [
+          "Walked through the live site with the curators and contributing artists to confirm each piece was presented as envisioned.",
+          "Made final adjustments to image quality and section pacing before the exhibition went live.",
+        ],
+        supportingImage: Step4,
+        icon: Send,
         leftSideDesign: true,
         rightSideDesign: false,
       },

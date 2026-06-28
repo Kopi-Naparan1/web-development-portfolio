@@ -62,26 +62,40 @@ function ContactForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
+  function resetIndicator() {
+    setTimeout(() => {
+      setStatus(null);
+      setIndicator("Send");
+    }, 2500);
+  }
+
   async function handleSubmit() {
+    if (!form.name || !form.email || !form.message) {
+      setStatus("error");
+      setIndicator("Fill all fields");
+
+      resetIndicator();
+
+      return;
+    }
+
     setIndicator("Sending...");
     setStatus("loading");
 
     try {
+      const data = await res.json();
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
-      if (res.ok) {
+      if (res.ok && data.success) {
         setStatus("success");
         setIndicator("Sent!");
         setForm(EMPTY_FORM);
 
-        setTimeout(() => {
-          setStatus(null);
-          setIndicator("Send");
-        }, 2500);
+        resetIndicator();
       } else {
         setStatus("error");
         setIndicator("Try Again");

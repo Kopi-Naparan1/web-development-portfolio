@@ -19,7 +19,7 @@ import {
   Zap,
   BarChart2,
   Activity,
-  Image,
+  Image as ImageIcon,
   Layers,
   Database,
 } from "lucide-react";
@@ -53,7 +53,7 @@ const skillsList = [
     skillStack: [
       { name: "Lighthouse", icon: BarChart2 },
       { name: "Web Vitals", icon: Activity },
-      { name: "Img optim.", icon: Image },
+      { name: "Img optim.", icon: ImageIcon },
       { name: "Lazy load", icon: Layers },
       { name: "Caching", icon: Database },
     ],
@@ -93,12 +93,6 @@ function ParticleBurst({ active }) {
   );
 }
 
-const headerCardMotionDivClassName =
-  "relative flex items-center justify-center gap-1.5 rounded-lg px-2 md:px-3 w-[30vw] md:w-[14vw] h-[6vh] md:h-[6vh] bg-primary/30 text-heading text-[14px] md:text-[16px] font-semibold cursor-pointer shadow-[0_4px_16px_rgba(26,63,203,0.22)] overflow-visible shrink-0";
-
-const skillCardMotionDivClassName =
-  "flex items-center justify-center gap-1.5 rounded-[12px] px-2 md:px-3 w-[26vw] md:w-[12vw] h-[5vh] md:h-[5vh] bg-lighter/70 text-heading/80 text-[13px] md:text-[16px] font-medium cursor-default select-none shrink-0";
-
 function HeaderCard({ icon: Icon, label, open, onClick }) {
   const [hovered, setHovered] = useState(false);
 
@@ -109,7 +103,11 @@ function HeaderCard({ icon: Icon, label, open, onClick }) {
       onHoverEnd={() => setHovered(false)}
       whileHover={{ boxShadow: "0 8px 28px rgba(26,63,203,0.38)" }}
       whileTap={{ scale: 0.97 }}
-      className={headerCardMotionDivClassName}
+      aria-expanded={open}
+      className="relative flex items-center justify-center gap-1.5 rounded-lg px-2 md:px-3
+        w-[30vw] md:w-[14vw] h-[6vh] bg-primary/30 text-heading
+        text-[14px] md:text-[16px] font-semibold cursor-pointer
+        shadow-[0_4px_16px_rgba(26,63,203,0.22)] overflow-visible shrink-0"
     >
       <div className="relative w-[20px] h-[20px] md:w-[28px] md:h-[28px] flex items-center justify-center shrink-0">
         <ParticleBurst active={hovered} />
@@ -126,7 +124,7 @@ function HeaderCard({ icon: Icon, label, open, onClick }) {
       <span className="truncate leading-tight text-center">{label}</span>
 
       <motion.span
-        className="text-[8px] md:text-[11px] opacity-70 flex-shrink-0"
+        className="text-[10px] md:text-[11px] opacity-70 flex-shrink-0"
         animate={{ rotate: open ? 0 : -90 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
@@ -138,20 +136,14 @@ function HeaderCard({ icon: Icon, label, open, onClick }) {
 
 function SkillCard({ icon: Icon, name }) {
   return (
-    <motion.div
-      whileHover={{ y: -2, scale: 1.03 }}
-      transition={{ type: "spring", stiffness: 400, damping: 18 }}
-      className={skillCardMotionDivClassName}
+    <div
+      className="flex items-center justify-center gap-1.5 rounded-[12px] px-2 md:px-3
+        w-[26vw] md:w-[12vw] h-[5vh] bg-lighter/70 text-heading/80
+        text-[13px] md:text-[16px] font-medium select-none shrink-0"
     >
-      <motion.div
-        whileHover={{ scale: 1.3, rotate: 6 }}
-        transition={{ type: "spring", stiffness: 400, damping: 15 }}
-        className="flex-shrink-0"
-      >
-        <Icon className="w-[13px] h-[13px] md:w-[16px] md:h-[16px]" />
-      </motion.div>
+      <Icon className="w-[13px] h-[13px] md:w-[16px] md:h-[16px] flex-shrink-0" />
       <span className="truncate">{name}</span>
-    </motion.div>
+    </div>
   );
 }
 
@@ -165,13 +157,13 @@ export default function Skills({ sectionID }) {
 
   return (
     <SectionScreenCut
-      className={"bg-secondary/15"}
+      className="bg-secondary/15"
       eyebrow="tech stack"
       id={sectionID}
       heading="tools i work with"
       subheading="Modern, fast, and built to scale — everything I use is production-ready."
     >
-      <div className="flex flex-row justify-center  min-h:h-[30vh] h-[40vh]  gap-2 md:gap-2.5 items-start">
+      <div className="flex flex-row justify-center gap-2 md:gap-2.5 items-start">
         {skillsList.map((group, i) => {
           const isOpen = openCols.includes(i);
           return (
