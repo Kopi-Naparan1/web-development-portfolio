@@ -13,7 +13,7 @@ const Spline = dynamic(() => import("@splinetool/react-spline"), {
 });
 
 const SPLINE_SCENE =
-  "https://prod.spline.design/isLz4-62pA2ya-Md/scene.splinecode";
+  "https://prod.spline.design/isLz4-62pA2ya-Md/scene.splinecode?v=2";
 
 const HERO_ALT = "3D hero visual";
 
