@@ -83,13 +83,12 @@ function ContactForm() {
     setStatus("loading");
 
     try {
-      const data = await res.json();
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-
+      const data = await res.json();
       if (res.ok && data.success) {
         setStatus("success");
         setIndicator("Sent!");
