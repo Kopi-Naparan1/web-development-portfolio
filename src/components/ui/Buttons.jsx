@@ -22,7 +22,7 @@ export function PrimaryButton({ textSize = "16px", mt = "2", className = "" }) {
       style={{ fontSize: textSize, marginTop }}
     >
       Lets Chat
-      <HiArrowRight className="m-1 group-hover:translate-x-1 transition duration-100 ease-in-out" />
+      <HiArrowRight className="  group-hover:translate-x-1 transition duration-100 ease-in-out" />
     </Link>
   );
 }
@@ -47,11 +47,11 @@ export function CardPrimaryButton({
 
   return (
     <button
-      className={`group justify-center items-center flex flex-row bg-lighter/70 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-secondary/70  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
+      className={`group justify-center items-center flex flex-row bg-lighter/70 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-2 rounded-lg hover:bg-secondary/70  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
       View Case Study
-      <HiArrowRight className="text-[12px] m-1 group-hover:translate-x-1 transition duration-100 ease-in-out" />
+      <HiArrowRight className="text-[12px] ml-1 group-hover:translate-x-1 transition duration-100 ease-in-out" />
     </button>
   );
 }
@@ -109,11 +109,11 @@ export function CaseStudyPrimary({
       href={liveSiteUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`flex flex-row gap 1 justify-center items-center bg-primary/30 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-primary/50  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
+      className={`flex  group :flex-row gap-1 justify-center items-center bg-primary/30 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-primary/50  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
       Live site
-      <HiArrowUpRight className="text-[12px]" />
+      <HiArrowUpRight className="text-[12px] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 ease-in-out duration-100 transition" />
     </a>
   );
 }
@@ -140,10 +140,10 @@ export function CaseStudySecondary({
   return (
     <Link
       href="/#works"
-      className={`flex flex-row gap-1 justify-center items-center bg-lighter/70 border-2 border-secondary/60  hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-secondary/70  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
+      className={`flex group flex-row gap-1 justify-center items-center bg-lighter/70 border-2 border-secondary/60  hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-secondary/70  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
-      <HiArrowLeft className="text-[12px]" />
+      <HiArrowLeft className="text-[12px]  group-hover:-translate-x-1 ease-in-out duration-100 transition " />
       Back to works
     </Link>
   );

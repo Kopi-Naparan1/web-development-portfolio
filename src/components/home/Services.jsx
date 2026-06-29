@@ -52,18 +52,18 @@ function ServiceCard({ service, index, total, mobile = false }) {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/30 md:via-black/80 to-black transition-colors duration-200 ease-in-out group-hover:from-black md:group-hover:via-background/30 group-hover:to-black/90" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/60 md:via-black/80 to-black transition-colors duration-200 ease-in-out group-hover:from-black md:group-hover:via-background/30 group-hover:to-black/90" />
 
       {/* Text */}
       <div className=" relative z-10 flex flex-col items-center text-center justify-between h-full text-background p-3">
         <div>
           <h3
-            className={`font-semibold ${mobile ? "text-[20px]" : "text-[24px] md:text-[26px]"}`}
+            className={`font-semibold ${mobile ? "text-[16px]" : "text-[20px] md:text-[22px]"}`}
           >
             {service.title}
           </h3>
           <p
-            className={`opacity-80 ${mobile ? "text-[14px]" : "text-[12px] md:text-[14px]"}`}
+            className={`opacity-80 ${mobile ? "text-[12px]" : "text-[10px] md:text-[12px]"}`}
           >
             {service.price}
           </p>
