@@ -11,14 +11,14 @@ export default function CaseStudyHero({ project }) {
           alt={project.alt || project.title}
           fill
           className="object-cover md:hidden"
-          priority
+          fetchPriority="low"
         />
         <Image
           src={project.heroImage}
           alt={project.alt || project.title}
           fill
           className="object-contain hidden md:block"
-          priority
+          fetchPriority="low"
         />
       </div>
 
