@@ -31,7 +31,7 @@ html {
   --font-jakarta: var(--font-jakarta-sans);
   --font-inter: var(--font-inter);
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #1e293b;
@@ -43,7 +43,7 @@ html {
     --lighter: #93c4fd8e;
     --accent: #93c5fd;
   }
-}
+} */
 
 body {
   margin: 0;

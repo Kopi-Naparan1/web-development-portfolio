@@ -21,7 +21,7 @@ const navLinks = [
 const socialLinks = [
   {
     label: "Twitter",
-    href: "https://twitter.com/yourhandle",
+    href: "https://twitter.com/NyroK46729",
     icon: <FaTwitter />,
   },
   {
@@ -31,7 +31,7 @@ const socialLinks = [
   },
   {
     label: "Facebook",
-    href: "https://facebook.com/yourhandle",
+    href: "https://facebook.com/kopi.anan.naparan.2024",
     icon: <FaFacebook />,
   },
   {

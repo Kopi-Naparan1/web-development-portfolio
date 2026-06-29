@@ -49,7 +49,7 @@ export default function About({ sectionID }) {
         </div>
 
         {/* Mobile paragraphs — all three */}
-        <div className="flex flex-col gap-6 text-[14px] text-center md:hidden w-[70vw] mt-[2%]">
+        <div className="flex flex-col gap-8 text-[14px] text-center md:hidden w-[70vw] mt-[2%]">
           {paragraphList.map((paragraph) => (
             <p key={paragraph.order}>{paragraph.p}</p>
           ))}

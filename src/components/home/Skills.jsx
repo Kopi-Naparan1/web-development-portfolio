@@ -169,7 +169,7 @@ export default function Skills({ sectionID }) {
           return (
             <div
               key={group.skillHeading}
-              className="flex flex-col gap-2 md:gap-2.5 items-center"
+              className="flex flex-col gap-3 md:gap-3.5 items-center"
             >
               <HeaderCard
                 icon={group.skillIcon}
@@ -185,7 +185,7 @@ export default function Skills({ sectionID }) {
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                    className="flex flex-col gap-2 md:gap-2.5 items-center overflow-hidden"
+                    className="flex flex-col gap-4 md:gap-4.5 items-center overflow-hidden"
                   >
                     {group.skillStack.map((skill) => (
                       <SkillCard

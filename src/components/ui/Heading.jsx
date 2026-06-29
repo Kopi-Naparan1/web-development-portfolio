@@ -137,7 +137,7 @@ export default function Heading() {
             href={"/#home"}
             className="flex flex-row gap-1 group  cursor-pointer"
           >
-            <div className="relative w-[30px] h-[30px] md:w-[46px] md:h-[46px] group-hover:opacity-60 transition-opacity ease-in-out duration-150">
+            <div className="items-center justify-center flex relative w-[34px] h-[34px] md:w-[46px] md:h-[46px] group-hover:opacity-60 transition-opacity ease-in-out duration-150">
               <Image
                 fill
                 className="object-contain"
