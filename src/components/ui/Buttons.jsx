@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HiArrowLeft, HiArrowUpRight } from "react-icons/hi2";
+import { HiArrowLeft, HiArrowUpRight, HiArrowRight } from "react-icons/hi2";
 
 export function PrimaryButton({ textSize = "16px", mt = "2", className = "" }) {
   const spacingScale = {
@@ -18,10 +18,11 @@ export function PrimaryButton({ textSize = "16px", mt = "2", className = "" }) {
   return (
     <Link
       href={"/#contact"}
-      className={`bg-primary font-jakarta text-background depth   font-semibold py-1 px-4 rounded-lg hover:bg-secondary shadow-md hover:text-heading/80 border-2 border-transparent hover:border-primary transition-colors duration-150 cursor-pointer ${className}`}
+      className={`flex flex-row group justify-center items-center bg-primary font-jakarta text-background depth   font-semibold py-1 px-4 rounded-lg hover:bg-secondary shadow-md hover:text-heading/80 border-2 border-transparent hover:border-primary transition-colors duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
-      Lets Chat -&gt;
+      Lets Chat
+      <HiArrowRight className="m-1 group-hover:translate-x-1 transition duration-100 ease-in-out" />
     </Link>
   );
 }
@@ -30,7 +31,6 @@ export function CardPrimaryButton({
   textSize = "12px",
   mt = "2",
   className = "",
-  text = "",
 }) {
   const spacingScale = {
     0: "0",
@@ -47,10 +47,11 @@ export function CardPrimaryButton({
 
   return (
     <button
-      className={`bg-lighter/70 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-secondary/70  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
+      className={`group justify-center items-center flex flex-row bg-lighter/70 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-4 rounded-lg hover:bg-secondary/70  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
     >
-      View Case Study -&gt;
+      View Case Study
+      <HiArrowRight className="text-[12px] m-1 group-hover:translate-x-1 transition duration-100 ease-in-out" />
     </button>
   );
 }
