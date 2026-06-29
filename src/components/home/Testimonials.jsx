@@ -167,7 +167,7 @@ export default function Testimonials({ sectionID }) {
       heading="Don't just take my word for it"
     >
       {/* Mobile */}
-      <div className="md:hidden flex flex-col items-center gap-3 w-full">
+      <div className="md:hidden flex flex-col items-center gap-10 w-full">
         {testimonialList.map((testimonial, index) => (
           <MobileTestimonialCard
             key={testimonial.name}
@@ -178,7 +178,7 @@ export default function Testimonials({ sectionID }) {
       </div>
 
       {/* Desktop */}
-      <div className="hidden md:flex flex-col items-center gap-4 w-full">
+      <div className="hidden md:flex flex-col items-center gap-8 w-full">
         {pairs.map((row, rowIndex) => (
           <DesktopRowMaker
             key={rowIndex}

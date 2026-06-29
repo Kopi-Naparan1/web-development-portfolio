@@ -157,11 +157,11 @@ export default function Skills({ sectionID }) {
 
   return (
     <SectionScreenCut
-      className="bg-secondary/15 py-[5vh]"
+      className="bg-secondary/15 py-[8vh] "
       eyebrow="tech stack"
       id={sectionID}
       heading="tools i work with"
-      subheading="Modern, fast, and built to scale — everything I use is production-ready."
+      // subheading="Modern, fast, and built to scale — everything I use is production-ready."
     >
       <div className="flex flex-row justify-center gap-2 md:gap-2.5 items-start">
         {skillsList.map((group, i) => {

@@ -71,7 +71,7 @@ function ProcessCard({ process, isMobile = false }) {
   return (
     <li
       className={`
-        list-none flex flex-col bg-lighter border-2 border-primary rounded-xl
+        list-none flex flex-col bg-lighter   rounded-xl
         transition-transform duration-300 ease-out
         hover:-translate-y-2 hover:shadow-lg
         ${isMobile ? "w-full px-5 py-5 gap-3" : "flex-1 min-w-[160px] max-w-[260px] px-5 py-6 gap-4"}
@@ -108,7 +108,7 @@ export default function Process({ sectionID }) {
       id={sectionID}
       eyebrow="how i work"
       heading="Simple, Clear, No Surprises"
-      subheading="From first message to launch day, here's what working with me looks like"
+      // subheading="From first message to launch day, here's what working with me looks like"
       minHeightClass="min-h-[65vh] md:h-auto"
       childrenClassName="w-full h-full"
     >

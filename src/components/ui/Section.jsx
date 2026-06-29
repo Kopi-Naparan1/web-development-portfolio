@@ -18,7 +18,7 @@ export function SectionScreen({
       className={`md:sectionLayout mobileSectionLayout   ${className} items-${headerPosition} ${minHeightClass}   `}
     >
       <div
-        className={`flex flex-col text-center gap-2  w-full ${eyebrowClassName}`}
+        className={`flex flex-col text-center gap-2  w-full ${eyebrowClassName} md:mb-0 mb-[6vh]`}
       >
         {eyebrow && <p className="md:eyebrow mobileEyebrow">{eyebrow}</p>}
         {heading && <h2 className="md:title mobileTitle">{heading}</h2>}
@@ -60,7 +60,7 @@ export function SectionScreenCut({
       ref={ref}
       className={`md:flexibleSectionLayout flexibleMobileSectionLayout  items-${headerPosition}   ${className}`}
     >
-      <div className="flex flex-col text-center gap-2  w-full">
+      <div className="flex flex-col text-center gap-2  w-full mb-[6vh]">
         {eyebrow && <p className="md:eyebrow mobileEyebrow">{eyebrow}</p>}
         {heading && <h2 className="md:title mobileTitle">{heading}</h2>}
         {subheading && (

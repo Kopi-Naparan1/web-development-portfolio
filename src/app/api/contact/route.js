@@ -20,11 +20,15 @@ export async function POST(request) {
 
         <h3>Email:</h3>
         <p>${email}</p>
-
+        <p>--------------------------</p>
+        <p></p>
         <h3>Message:</h3>
 
         <p>${message}</p>
+        <p></p>
 
+        
+        <p>--------------------------</p>
         <p>NOTE TO SELF: Respond Professionally</p>
       `,
     });

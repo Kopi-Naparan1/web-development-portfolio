@@ -199,7 +199,7 @@ function ProjectCard({ project, mobile = false }) {
         onMouseEnter={!mobile ? handleDesktopEnter : undefined}
         onMouseLeave={!mobile ? handleDesktopLeave : undefined}
         onClick={mobile ? handleMobileTap : undefined}
-        className={`relative overflow-hidden rounded-lg border-2 shadow-lg border-primary cursor-pointer ${
+        className={`relative overflow-hidden rounded-lg shadow-lgcursor-pointer ${
           mobile ? "w-[40vw] h-[32vh]" : "w-[26vw] h-[65vh]"
         }`}
       >
@@ -272,10 +272,10 @@ export default function Projects({ sectionID }) {
     <SectionScreen
       id={sectionID}
       minHeightClass="min-h-[85vh] md:min-h-screen"
-      className="bg-secondary/15 py-[5vh]"
+      className="bg-secondary/15 py-[8vh]"
       eyebrow="SELECTED WORKS"
       heading="Projects that deliver results"
-      subheading="A few things I've built — each one designed with a clear goal in mind"
+      // subheading="A few things I've built — each one designed with a clear goal in mind"
       childrenClassName="w-full h-full"
     >
       {/* Desktop */}

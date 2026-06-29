@@ -106,7 +106,7 @@ function ContactForm() {
   }
 
   return (
-    <div className="w-full max-w-[480px] md:max-w-[520px] mx-auto bg-lighter border-secondary border-2 rounded-lg flex flex-col py-6 px-5 gap-4 shadow-md">
+    <div className="w-full max-w-[480px] md:max-w-[520px] mx-auto bg-lighter border-secondary border-2 rounded-lg flex flex-col py-6 px-5 gap-4 ">
       <h3 className="text-[16px] font-bold text-center">
         Let&apos;s Chat About Your Project
       </h3>
@@ -140,7 +140,7 @@ function ContactForm() {
         <button
           onClick={handleSubmit}
           disabled={status === "loading"}
-          className="bg-primary/50 border-2 border-transparent hover:border-primary font-jakarta text-heading font-semibold py-2 px-6 rounded-lg hover:bg-primary/70 shadow-md hover:text-background/80 transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed w-full max-w-[200px]"
+          className="bg-primary/50 border-2 border-transparent hover:border-primary font-jakarta text-heading font-semibold py-2 px-6 rounded-lg hover:bg-primary/70  hover:text-background/80 transition-colors duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed w-full max-w-[200px]"
         >
           {indicator}
         </button>
@@ -154,13 +154,13 @@ export default function Contact({ sectionID }) {
     <SectionScreen
       minHeightClass="min-h-[85vh]"
       id={sectionID}
-      className="md:flex-row! md:items-center md:justify-between bg-secondary/15 py-[5vh]"
+      className="md:flex-row! md:items-center md:justify-between bg-secondary/15 py-[8vh]"
       eyebrowClassName="md:text-left md:max-w-[40%]"
       childrenClassName="flex items-center justify-center w-full md:max-w-[50%]"
       eyebrow={"Get in touch"}
       heading={"Let's Build great websites"}
       subheading={
-        "Have a project in mind? I'd love to hear about it. Fill out the form below and I'll get back to you within 24 hours."
+        "Fill out the form below and I'll get back to you within 24 hours."
       }
     >
       <ContactForm />
