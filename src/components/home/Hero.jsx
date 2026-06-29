@@ -44,7 +44,7 @@ export function HeroSection({ sectionID }) {
               alt={HERO_ALT}
               fill
               className="object-contain"
-              fetchPriority="high"
+              priority
               sizes="40vw"
             />
           </div>
@@ -60,7 +60,7 @@ export function HeroSection({ sectionID }) {
             alt={HERO_ALT}
             fill
             className="object-contain"
-            fetchPriority="high"
+            priority
             sizes="100vw"
           />
         </div>
