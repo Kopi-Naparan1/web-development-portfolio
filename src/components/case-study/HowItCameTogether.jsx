@@ -7,8 +7,9 @@ function SolutionImage({ src, alt, mobile = false }) {
     return (
       <Image
         alt={alt}
+        fill
         src={src}
-        className="rounded-xl shadow-md object-cover w-full h-auto"
+        className=" rounded-xl shadow-md object-cover"
       />
     );
   }
@@ -72,7 +73,7 @@ export default function HowItCameTogether({ slug }) {
           <h3 className="text-[11px] uppercase tracking-widest text-muted mb-5 font-semibold">
             Solution
           </h3>
-          <div className="block md:hidden">
+          <div className="block relative md:hidden w-full h-[30vh]">
             <SolutionImage
               src={data.solutionURLMobile}
               alt="Mobile solution preview"

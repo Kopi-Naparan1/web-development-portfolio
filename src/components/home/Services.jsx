@@ -35,7 +35,7 @@ function ServiceCard({ service, index, total, mobile = false }) {
 
   return (
     <div
-      className={`group relative overflow-hidden border-2 border-primary ${
+      className={`group relative overflow-hidden   ${
         mobile ? "h-[28vh] w-[75%]" : "h-[45vh] w-[32%]"
       } ${borderRadius}`}
     >
@@ -52,18 +52,18 @@ function ServiceCard({ service, index, total, mobile = false }) {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/70 transition-colors duration-200 ease-in-out group-hover:from-black group-hover:via-secondary/40 group-hover:to-black/90" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/30 md:via-black/80 to-black transition-colors duration-200 ease-in-out group-hover:from-black md:group-hover:via-background/30 group-hover:to-black/90" />
 
       {/* Text */}
-      <div className="relative z-10 flex flex-col items-center text-center justify-between h-full text-background p-3">
+      <div className=" relative z-10 flex flex-col items-center text-center justify-between h-full text-background p-3">
         <div>
           <h3
-            className={`font-semibold ${mobile ? "text-[18px]" : "text-[24px] md:text-[26px]"}`}
+            className={`font-semibold ${mobile ? "text-[20px]" : "text-[24px] md:text-[26px]"}`}
           >
             {service.title}
           </h3>
           <p
-            className={`opacity-80 ${mobile ? "text-[12px]" : "text-[12px] md:text-[14px]"}`}
+            className={`opacity-80 ${mobile ? "text-[14px]" : "text-[12px] md:text-[14px]"}`}
           >
             {service.price}
           </p>
@@ -73,7 +73,7 @@ function ServiceCard({ service, index, total, mobile = false }) {
         <p
           className={`transition-opacity duration-300 ease-in-out ${
             mobile
-              ? "opacity-80 text-[13px]"
+              ? "hidden"
               : "opacity-0 group-hover:opacity-100 text-[14px] md:text-[16px]"
           }`}
         >

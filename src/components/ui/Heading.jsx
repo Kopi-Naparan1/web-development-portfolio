@@ -1,6 +1,6 @@
 "use client";
 
-import logo from "../../../public/logo.png";
+import logo from "../../../public/kopi-logo.svg";
 import { PrimaryButton } from "../ui/Buttons";
 import Image from "next/image";
 import Link from "next/link";
@@ -133,8 +133,11 @@ export default function Heading() {
       <div className="headerMobile md:header bg-secondary/20 backdrop-blur-md sticky top-0 z-50 border-b border-secondary/20">
         {/* Logo + name */}
         <div className="flex items-center">
-          <div className="flex flex-row gap-1">
-            <div className="relative w-[30px] h-[30px] md:w-[46px] md:h-[46px]">
+          <Link
+            href={"/#home"}
+            className="flex flex-row gap-1 group  cursor-pointer"
+          >
+            <div className="relative w-[30px] h-[30px] md:w-[46px] md:h-[46px] group-hover:opacity-60 transition-opacity ease-in-out duration-150">
               <Image
                 fill
                 className="object-contain"
@@ -143,15 +146,15 @@ export default function Heading() {
                 alt="Logo"
               />
             </div>
-            <div className="flex flex-col justify-center group cursor-pointer">
-              <p className="md:headerName headerNameMobile group-hover:text-heading/70 transition-colors duration-150">
+            <div className="flex flex-col justify-center ">
+              <p className="md:headerName headerNameMobile group-hover:text-heading/70 transition-colors ease-in-out duration-150">
                 Kopi Anan
               </p>
-              <p className="md:headerName headerNameMobile group-hover:text-heading/70 transition-colors duration-150">
+              <p className="md:headerName headerNameMobile group-hover:text-heading/70 transition-colors ease-in-out duration-150">
                 Naparan
               </p>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Desktop nav */}
