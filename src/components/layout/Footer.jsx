@@ -71,6 +71,7 @@ export default function Footer() {
       <div className="flex flex-row gap-6 items-center justify-center mt-2 w-full">
         {socialLinks.map((social) => (
           <a
+            aria-label={social.label}
             key={social.label}
             href={social.href}
             target="_blank"

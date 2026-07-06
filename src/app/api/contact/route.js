@@ -1,12 +1,23 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let resend;
+function getResendClient() {
+  if (!resend) {
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error("RESEND_API_KEY is not set");
+    }
+    resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resend;
+}
 
 export async function POST(request) {
   const { name, email, message } = await request.json();
 
   const SUBJECT = "Web Dev Portfolio Website Message";
   try {
+    const resend = getResendClient();
+
     await resend.emails.send({
       from: "Portfolio <onboarding@resend.dev>",
       replyTo: email,
@@ -34,7 +45,8 @@ export async function POST(request) {
     });
 
     return Response.json({ success: true });
-  } catch {
+  } catch (err) {
+    console.error("Contact form error:", err);
     return Response.json(
       { success: false, error: "Failed to send the email" },
       { status: 500 },
