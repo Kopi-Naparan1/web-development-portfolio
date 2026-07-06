@@ -25,7 +25,7 @@ function DesktopWorksDropdown() {
       onMouseLeave={() => setIsHovered(false)}
     >
       <Link
-        href={"#works"}
+        href={"/#works"}
         className="text-[14px] font-medium rounded-lg px-1.5 py-0.5 border border-transparent hover:border-secondary transition-colors ease-in-out duration-200 cursor-pointer"
       >
         Works

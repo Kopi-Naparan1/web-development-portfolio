@@ -160,7 +160,7 @@ export default function Contact({ sectionID }) {
       eyebrow={"Get in touch"}
       heading={"Let's Build great websites"}
       subheading={
-        "Fill out the form below and I'll get back to you within 24 hours."
+        "Fill out the form below, and I'll get back to you within 24 hours. You can also reach me through Facebook or Instagram."
       }
     >
       <ContactForm />
