@@ -31,7 +31,6 @@ export default function RootLayout({ children }) {
     >
       <head>
         <link
-          rel="preload"
           as="image"
           href="/important-assets/homepage/hero/hero.webp"
           fetchPriority="high"

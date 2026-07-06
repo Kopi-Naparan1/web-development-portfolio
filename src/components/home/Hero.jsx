@@ -43,7 +43,6 @@ export function HeroSection({ sectionID }) {
               src={heroFallback}
               alt={HERO_ALT}
               className="w-full h-auto object-contain"
-              priority
               sizes="40vw"
             />
           </div>

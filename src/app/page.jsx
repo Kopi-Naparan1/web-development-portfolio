@@ -6,12 +6,6 @@ import { HeroSection } from "@/components/home/Hero";
 import Projects from "@/components/home/Projects";
 import SocialProof from "@/components/home/SocialProof";
 
-// import Process from "@/components/home/Process";
-// import Services from "@/components/home/Services";
-// import Testimonials from "@/components/home/Testimonials";
-// import Skills from "@/components/home/Skills";
-// import About from "@/components/home/About";
-// import Contact from "@/components/home/Contact";
 const Process = nextDynamic(() => import("@/components/home/Process"));
 const Services = nextDynamic(() => import("@/components/home/Services"));
 const Testimonials = nextDynamic(

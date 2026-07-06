@@ -9,6 +9,7 @@ function FloatingInput({ name, label, type = "text", value, onChange }) {
   return (
     <div className="relative w-full">
       <input
+        id={name}
         type={type}
         name={name}
         value={value}
@@ -18,6 +19,7 @@ function FloatingInput({ name, label, type = "text", value, onChange }) {
         className="w-full h-12 bg-secondary rounded-lg px-4 pt-4 text-heading outline-none border-2 border-transparent focus:border-primary transition-all duration-200"
       />
       <label
+        htmlFor={name}
         className={`absolute left-4 transition-all duration-200 pointer-events-none text-subtext
           ${isFloating ? "top-1 text-[10px] font-semibold text-primary" : "top-3 text-[14px]"}`}
       >
