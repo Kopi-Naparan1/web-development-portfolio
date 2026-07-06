@@ -165,8 +165,25 @@ export default function Contact({ sectionID }) {
           Fill out the form below, and I'll get back to you within 24 hours.{" "}
           <br></br>
           <br></br>
-          You can also reach me through Facebook or Instagram.
-          <br></br>
+          You can also reach me through{" "}
+          <a
+            href="https://facebook.com/kopi.anan.naparan.2024"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline cursor-pointer hover:text-heading/50 transition-colors duration-150 ease-in-out"
+          >
+            Facebook
+          </a>{" "}
+          or{" "}
+          <a
+            href="https://instagram.com/nyro_k1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline cursor-pointer hover:text-heading/50 transition-colors duration-150 ease-in-out"
+          >
+            Instagram
+          </a>
+          .<br></br>
           <br></br>
           Currently taking 1–2 select projects/month
         </>
