@@ -36,6 +36,7 @@ function FloatingTextarea({ name, label, value, onChange }) {
   return (
     <div className="relative w-full h-full">
       <textarea
+        id={name}
         name={name}
         value={value}
         onChange={onChange}
@@ -44,6 +45,7 @@ function FloatingTextarea({ name, label, value, onChange }) {
         className="w-full h-full bg-secondary rounded-lg px-4 pt-6 text-heading outline-none border-2 border-transparent focus:border-primary transition-all duration-200 resize-none"
       />
       <label
+        htmlFor={name}
         className={`absolute left-4 transition-all duration-200 pointer-events-none text-subtext
           ${isFloating ? "top-1 text-[10px] font-semibold text-primary" : "top-3 text-[14px]"}`}
       >

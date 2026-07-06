@@ -90,7 +90,7 @@ function CardStaticImage({ project, mobile, isVideoPlaying }) {
         fill
         src={project.static}
         alt={project.alt}
-        sizes={mobile ? "40vw" : "26vw"}
+        sizes={mobile ? "35vw" : "22vw"}
         className={`object-cover rounded-lg transition-opacity duration-300 ${
           isVideoPlaying ? "opacity-0" : "opacity-100"
         }`}
