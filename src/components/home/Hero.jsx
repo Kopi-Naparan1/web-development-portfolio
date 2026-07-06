@@ -24,7 +24,7 @@ export function HeroSection({ sectionID }) {
     <>
       {/* DESKTOP */}
       <section
-        className="sectionLayout md:h-[95vh] hidden md:block"
+        className="sectionLayout md:h-[95vh] hidden md:flex"
         id={sectionID}
       >
         <div className="grid grid-cols-10 h-full w-full items-center">
@@ -38,12 +38,11 @@ export function HeroSection({ sectionID }) {
 
           <div className="col-span-1" />
 
-          <div className="col-span-4 h-full w-full relative">
+          <div className="col-span-4 h-full w-full flex items-center justify-center">
             <Image
               src={heroFallback}
               alt={HERO_ALT}
-              fill
-              className="object-contain"
+              className="w-full h-auto object-contain"
               priority
               sizes="40vw"
             />
@@ -54,12 +53,11 @@ export function HeroSection({ sectionID }) {
       {/* MOBILE */}
       <section className="md:hidden mobileSectionLayout h-[95vh]">
         <div className="flex-[1]" />
-        <div className="flex-[5] w-full min-h-0 relative">
+        <div className="flex-[5] w-full min-h-0 flex items-center justify-center">
           <Image
             src={heroFallback}
             alt={HERO_ALT}
-            fill
-            className="object-contain"
+            className="w-full h-auto object-contain"
             priority
             sizes="100vw"
           />
