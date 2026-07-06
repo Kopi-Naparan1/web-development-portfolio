@@ -29,13 +29,6 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${jakartaSans.variable} ${inter.variable} h-full antialiased`}
     >
-      <head>
-        <link
-          as="image"
-          href="/important-assets/homepage/hero/hero.webp"
-          fetchPriority="high"
-        />
-      </head>
       <body className="">
         <Header />
         <main className="flex-1">{children}</main>

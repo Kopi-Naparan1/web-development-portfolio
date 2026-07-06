@@ -28,9 +28,11 @@ export function PrimaryButton({ textSize = "16px", mt = "2", className = "" }) {
 }
 
 export function CardPrimaryButton({
+  as: Tag = "button",
   textSize = "12px",
   mt = "2",
   className = "",
+  ...rest
 }) {
   const spacingScale = {
     0: "0",
@@ -46,13 +48,14 @@ export function CardPrimaryButton({
   const marginTop = spacingScale[mt] ?? mt;
 
   return (
-    <button
-      className={`group justify-center items-center flex flex-row bg-lighter/70 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-2 rounded-lg hover:bg-secondary/70  hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
+    <Tag
+      className={`group justify-center items-center flex flex-row bg-lighter/70 border-2 border-secondary/60 hover:border-primary font-jakarta text-heading font-semibold py-1 px-2 rounded-lg hover:bg-secondary/70 hover:text-heading/80 transition-colors ease-in-out duration-150 cursor-pointer ${className}`}
       style={{ fontSize: textSize, marginTop }}
+      {...rest}
     >
       View Case Study
       <HiArrowRight className="text-[12px] ml-1 group-hover:translate-x-1 transition duration-100 ease-in-out" />
-    </button>
+    </Tag>
   );
 }
 

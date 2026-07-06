@@ -104,10 +104,7 @@ function HeaderCard({ icon: Icon, label, open, onClick }) {
       whileHover={{ boxShadow: "0 8px 28px rgba(26,63,203,0.38)" }}
       whileTap={{ scale: 0.97 }}
       aria-expanded={open}
-      className="relative flex items-center justify-center gap-1.5 rounded-lg px-2 md:px-3
-        w-[30vw] md:w-[14vw] h-[6vh] bg-primary/30 text-heading
-        text-[14px] md:text-[16px] font-semibold cursor-pointer
-        shadow-[0_4px_16px_rgba(26,63,203,0.22)] overflow-visible shrink-0"
+      className="relative flex items-center justify-center gap-1.5 rounded-lg px-2 md:px-3 w-[30vw] md:w-[14vw] h-[6vh] bg-primary/30 text-heading text-[14px] md:text-[16px] font-semibold cursor-pointer shadow-[0_4px_16px_rgba(26,63,203,0.22)] overflow-visible shrink-0"
     >
       <div className="relative w-[20px] h-[20px] md:w-[28px] md:h-[28px] flex items-center justify-center shrink-0">
         <ParticleBurst active={hovered} />
@@ -136,11 +133,7 @@ function HeaderCard({ icon: Icon, label, open, onClick }) {
 
 function SkillCard({ icon: Icon, name }) {
   return (
-    <div
-      className="flex items-center justify-center gap-1.5 rounded-[12px] px-2 md:px-3
-        w-[26vw] md:w-[12vw] h-[5vh] bg-lighter/70 text-heading/80
-        text-[13px] md:text-[16px] font-medium select-none shrink-0"
-    >
+    <div className="flex items-center justify-center gap-1.5 rounded-[12px] px-2 md:px-3 w-[26vw] md:w-[12vw] h-[5vh] bg-lighter/70 text-heading/80 text-[13px] md:text-[16px] font-medium select-none shrink-0">
       <Icon className="w-[13px] h-[13px] md:w-[16px] md:h-[16px] flex-shrink-0" />
       <span className="truncate">{name}</span>
     </div>

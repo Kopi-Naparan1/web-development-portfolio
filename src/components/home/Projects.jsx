@@ -236,6 +236,7 @@ function ProjectCard({ project, mobile = false }) {
               }`}
             >
               <CardPrimaryButton
+                as="span"
                 textSize="12px"
                 mt="0"
                 className="w-full justify-center"
@@ -255,7 +256,10 @@ function ProjectCard({ project, mobile = false }) {
       {!mobile && (
         <div className="flex w-full gap-2 mt-4">
           <Link href={`/case-study/${project.slug}`} className="flex flex-1">
-            <CardPrimaryButton className="flex flex-1 justify-center" />
+            <CardPrimaryButton
+              as="span"
+              className="flex flex-1 justify-center"
+            />
           </Link>
         </div>
       )}
