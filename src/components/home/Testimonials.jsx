@@ -63,11 +63,11 @@ function TestimonialCard({ testimonial, translateX = 0 }) {
   return (
     <div
       style={{ transform: `translateX(${translateX}vw)` }}
-      className="w-[28%] rounded-xl bg-lighter shadow-sm flex flex-col py-[5vh]
+      className="w-[28%] rounded-xl bg-lighter shadow-sm flex flex-col justify-center py-[1vh]
         transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-md"
     >
       {/* Quote icon */}
-      <div className="px-4 pt-4 pb-2">
+      <div className="px-4  ">
         <Quote className="w-4 h-4 text-primary/40 mb-2" aria-hidden="true" />
         <p className="text-[14px] leading-relaxed text-foreground/80">
           {testimonial.description}
@@ -75,7 +75,7 @@ function TestimonialCard({ testimonial, translateX = 0 }) {
       </div>
 
       {/* Footer */}
-      <div className="mt-auto flex flex-row items-center gap-3 border-t border-heading/10 px-4 py-3">
+      <div className="mt-auto flex flex-row items-center gap-3 border-t border-heading/10 px-4 py-2">
         <div className="relative w-9 h-9 rounded-full overflow-hidden shrink-0">
           <Image
             alt={`${testimonial.name} profile picture`}
@@ -106,7 +106,7 @@ function MobileTestimonialCard({ testimonial, index }) {
       className={`w-[85%] rounded-xl bg-lighter   shadow-sm flex flex-col
         ${index % 2 === 0 ? "mr-auto" : "ml-auto"}`}
     >
-      <div className="px-4 pt-4 pb-2">
+      <div className="px-4 ">
         <Quote className="w-4 h-4 text-primary/40 mb-2" aria-hidden="true" />
         <p className="text-[13px] leading-relaxed text-foreground/80">
           {testimonial.description}
