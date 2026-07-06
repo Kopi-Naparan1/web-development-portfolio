@@ -40,6 +40,7 @@ export function HeroSection({ sectionID }) {
 
           <div className="col-span-4 h-full w-full flex items-center justify-center">
             <Image
+              loading="lazy"
               src={heroFallback}
               alt={HERO_ALT}
               className="w-full h-auto object-contain"
